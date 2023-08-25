@@ -13,7 +13,7 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 
 clean:

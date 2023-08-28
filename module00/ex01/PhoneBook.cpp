@@ -23,7 +23,7 @@ void PhoneBook::search(void) {
         std::cout << std::endl;
     }
 
-
+    
 
 }
 
@@ -38,7 +38,7 @@ void PhoneBook::add(void) {
     std::string p4;
     std::string p5;
 
-    std::cin.ignore();
+    // std::cin.ignore();
     while (p1.empty())
         std::cout << "first name: ", std::getline (std::cin, p1);
     while (p2.empty())

@@ -5,8 +5,8 @@ class Sample {
     
 public:
 
-    Sample(void);
-    ~Sample(void);
+    Sample(void);   // constructor
+    ~Sample(void);  // destructor
 
 };  // do not forget the ; at the end of the class
 

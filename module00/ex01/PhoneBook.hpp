@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 #include "Contact.hpp"
 
 #ifndef PHONEBOOK_H
@@ -9,17 +10,15 @@ class PhoneBook {
     
 public:
 
-    Contact contacts[8];
-
     PhoneBook();
     ~PhoneBook(void);
 
-    int add(void);
+    void add(void);
     void search(void);
 
 private:
 
-    void prompt(int);
+    Contact contacts[8];
 
 };
 

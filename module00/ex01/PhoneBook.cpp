@@ -12,6 +12,7 @@ void PhoneBook::search(void) {
     std::cout << std::setw(10) << std::right << "last name" << "|";
     std::cout << std::setw(10) << std::right << "nickname";
     std::cout << std::endl;
+
     for (int i = 0; i < 8; i++) {
         if (this->contacts[i].index == 42)
             break;
@@ -22,9 +23,15 @@ void PhoneBook::search(void) {
         std::cout << std::endl;
     }
 
+
+
 }
 
-void PhoneBook::prompt(int i) {
+void PhoneBook::add(void) {
+
+    static int i = -1;
+    i++;
+
     std::string p1;
     std::string p2;
     std::string p3;
@@ -32,33 +39,23 @@ void PhoneBook::prompt(int i) {
     std::string p5;
 
     std::cin.ignore();
-    std::cout << "first name: ";
-    std::getline (std::cin, p1);
-    std::cout << "last name: ";
-    std::getline (std::cin, p2);
-    std::cout << "nickname: ";
-    std::getline (std::cin, p3);
-    std::cout << "phone number: ";
-    std::getline (std::cin, p4);
-    std::cout << "darkest secret: ";
-    std::getline (std::cin, p5);
+    while (p1.empty())
+        std::cout << "first name: ", std::getline (std::cin, p1);
+    while (p2.empty())
+        std::cout << "last name: ", std::getline (std::cin, p2);
+    while (p3.empty())
+        std::cout << "nickname: ", std::getline (std::cin, p3);
+    while (p4.empty())
+        std::cout << "phone number: ", std::getline (std::cin, p4);
+    while (p5.empty())
+        std::cout << "darkest secret: ", std::getline (std::cin, p5);
 
-    this->contacts[i].index = i;
-    this->contacts[i].firstName = p1;
-    this->contacts[i].lastName = p2;
-    this->contacts[i].nickname = p3;
-    this->contacts[i].phoneNumber = p4;
-    this->contacts[i].darkestSecret = p5;
-
-}
-
-int PhoneBook::add(void) {
-
-    static int tracker = -1;
-    tracker++;
-    prompt(tracker % 8);
-
-    return 0;
+    this->contacts[i % 8].index = i % 8;
+    this->contacts[i % 8].firstName = p1;
+    this->contacts[i % 8].lastName = p2;
+    this->contacts[i % 8].nickname = p3;
+    this->contacts[i % 8].phoneNumber = p4;
+    this->contacts[i % 8].darkestSecret = p5;
 }
 
 PhoneBook::PhoneBook() {

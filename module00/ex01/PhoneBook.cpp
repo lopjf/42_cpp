@@ -42,10 +42,6 @@ void PhoneBook::search(void) {
     else
         std::cout << "Incorrect index" << std::endl;
 
-    // check if int is in between 1 and 8 and that the contact exist (compare the provided to the index of the contact. if it's 0, it's not existing)
-
-
-
 }
 
 void PhoneBook::add(void) {

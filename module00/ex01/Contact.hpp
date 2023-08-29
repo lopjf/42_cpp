@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
+#include <cstdlib>
 
 #ifndef CONTACT_H
 # define CONTACT_H

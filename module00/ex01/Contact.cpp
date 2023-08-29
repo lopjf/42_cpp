@@ -2,7 +2,7 @@
 
 Contact::Contact() {
 
-    this->index = 42;
+    this->index = 0;
 
     return;
 }

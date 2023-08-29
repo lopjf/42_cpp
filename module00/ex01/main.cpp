@@ -19,7 +19,7 @@ int main() {
         else if (buf.compare("EXIT") == 0)
             return 0;
         else {
-            std::cout << "Invalid command." << std::endl;
+            std::cout << "Invalid command " << std::endl;
             std::cout << "Available commands: ADD, SEARCH and EXIT" << std::endl;
         }
     }

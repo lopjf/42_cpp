@@ -2,7 +2,7 @@
 #include "Contact.hpp"
 
 void PhoneBook::search(void) {
-    if (this->contacts[0].index == 42) {
+    if (this->contacts[0].index == 0) {
         std::cout << "No contact to display" << std::endl;
         return;
     }
@@ -14,7 +14,7 @@ void PhoneBook::search(void) {
     std::cout << std::endl;
 
     for (int i = 0; i < 8; i++) {
-        if (this->contacts[i].index == 42)
+        if (this->contacts[i].index == 0)
             break;
         std::cout << std::setw(10) << std::right << this->contacts[i].index << "|";
         std::cout << std::setw(10) << std::right << (this->contacts[i].firstName.length() > 10 ? contacts[i].firstName.substr(0, 9) + "." : contacts[i].firstName) << "|";
@@ -23,7 +23,28 @@ void PhoneBook::search(void) {
         std::cout << std::endl;
     }
 
-    
+    std::string buf;
+    std::cout << "Select index: ";
+    std::getline(std::cin, buf);
+    int idx = std::atoi(buf.c_str()) - 1;
+
+    if (idx > -1 && idx < 8) {
+        if (this->contacts[idx].firstName.empty())
+            std::cout << "Contact doesn't exist" << std::endl;
+        else {
+            std::cout << "first name: " + this->contacts[idx].firstName << std::endl;
+            std::cout << "last name: " + this->contacts[idx].lastName << std::endl;
+            std::cout << "nickname: " + this->contacts[idx].nickname << std::endl;
+            std::cout << "phone number: " + this->contacts[idx].phoneNumber << std::endl;
+            std::cout << "darkest secret: " + this->contacts[idx].darkestSecret << std::endl;
+        }
+    }
+    else
+        std::cout << "Incorrect index" << std::endl;
+
+    // check if int is in between 1 and 8 and that the contact exist (compare the provided to the index of the contact. if it's 0, it's not existing)
+
+
 
 }
 
@@ -38,7 +59,6 @@ void PhoneBook::add(void) {
     std::string p4;
     std::string p5;
 
-    // std::cin.ignore();
     while (p1.empty())
         std::cout << "first name: ", std::getline (std::cin, p1);
     while (p2.empty())
@@ -50,7 +70,7 @@ void PhoneBook::add(void) {
     while (p5.empty())
         std::cout << "darkest secret: ", std::getline (std::cin, p5);
 
-    this->contacts[i % 8].index = i % 8;
+    this->contacts[i % 8].index = (i % 8) + 1;
     this->contacts[i % 8].firstName = p1;
     this->contacts[i % 8].lastName = p2;
     this->contacts[i % 8].nickname = p3;

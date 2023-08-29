@@ -1,7 +1,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-void PhoneBook::search(void) {
+void PhoneBook::search(void) const {
     if (this->contacts[0].index == 0) {
         std::cout << "No contact to display" << std::endl;
         return;

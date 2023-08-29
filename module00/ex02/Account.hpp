@@ -38,7 +38,7 @@ public:
 	void	displayStatus( void ) const;
 
 
-private:
+// private:
 
 	static int	_nbAccounts;
 	static int	_totalAmount;

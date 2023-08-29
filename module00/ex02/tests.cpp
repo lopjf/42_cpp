@@ -13,6 +13,13 @@
 #include "Account.hpp"
 
 
+// int		main( void ) {
+
+// 	Account account;
+// 	return 0;
+// }
+
+
 int		main( void ) {
 
 	typedef std::vector<Account::t>							  accounts_t;

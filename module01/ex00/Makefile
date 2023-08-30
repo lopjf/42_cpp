@@ -1,5 +1,5 @@
-NAME 			= megaphone
-SRCS 			= ./megaphone.cpp
+NAME 			= zombie
+SRCS 			= ./newZombie.cpp ./randomChump.cpp ./Zombie.cpp ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -std=c++98

@@ -25,7 +25,9 @@ void PhoneBook::search(void) const {
 
     std::string buf;
     std::cout << "Select index: ";
-    std::getline(std::cin, buf);
+	while (!(std::getline(std::cin, buf)))
+		return;
+
     int idx = std::atoi(buf.c_str()) - 1;
 
     if (idx > -1 && idx < 8) {
@@ -55,16 +57,31 @@ void PhoneBook::add(void) {
     std::string p4;
     std::string p5;
 
-    while (p1.empty())
-        std::cout << "first name: ", std::getline (std::cin, p1);
-    while (p2.empty())
-        std::cout << "last name: ", std::getline (std::cin, p2);
-    while (p3.empty())
-        std::cout << "nickname: ", std::getline (std::cin, p3);
-    while (p4.empty())
-        std::cout << "phone number: ", std::getline (std::cin, p4);
-    while (p5.empty())
-        std::cout << "darkest secret: ", std::getline (std::cin, p5);
+    while (p1.empty()) {
+        std::cout << "first name: ";
+		while (!(std::getline(std::cin, p1)))
+			return;
+	}
+    while (p2.empty()) {
+        std::cout << "last name: ";
+		while (!(std::getline(std::cin, p2)))
+			return;
+	}
+    while (p3.empty()) {
+        std::cout << "nickname: ";
+		while (!(std::getline(std::cin, p3)))
+			return;
+	}
+    while (p4.empty()) {
+        std::cout << "phone number: ";
+		while (!(std::getline(std::cin, p4)))
+			return;
+	}
+    while (p5.empty()) {
+        std::cout << "darkest secret: ";
+		while (!(std::getline(std::cin, p5)))
+			return;
+	}
 
     this->contacts[i % 8].index = (i % 8) + 1;
     this->contacts[i % 8].firstName = p1;

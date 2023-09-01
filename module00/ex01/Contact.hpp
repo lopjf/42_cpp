@@ -2,6 +2,7 @@
 #include <cstring>
 #include <iomanip>
 #include <cstdlib>
+#include <cctype>
 
 #ifndef CONTACT_H
 # define CONTACT_H

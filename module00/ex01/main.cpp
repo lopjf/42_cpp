@@ -10,7 +10,8 @@ int main() {
 
     while (1) {
         std::cout << "Command: ";
-        std::getline(std::cin, buf);
+        while (!(std::getline(std::cin, buf)))
+			return 0;
 
         if (buf.compare("ADD") == 0)
             phonebook.add();

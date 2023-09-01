@@ -1,8 +1,8 @@
-NAME 			= zombie
-SRCS 			= ./newZombie.cpp ./randomChump.cpp ./Zombie.cpp ./main.cpp
+NAME 			= brain
+SRCS 			= ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -std=c++98
+FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CC				= clang++
 
 .cpp.o:

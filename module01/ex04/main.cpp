@@ -4,15 +4,21 @@
 
 // https://cplusplus.com/doc/tutorial/files/
 
-void	replace_string(std::string str, char *s1, char *s2) {
-	int j = 0;
-	
-	for (int i = 0; i < str.length(); i++) {
-		if (str[i] == s1[j]) {
-			i++;
-			j++;
+
+
+std::string	replace_string(std::string str, const char *s1, const char *s2) {
+	std::string ret = str;
+
+	for (unsigned long i = 0; i < ret.length(); i++) {
+		if (ret[i] == s1[0]) {
+			if (std::strncmp(&ret[i], s1, strlen(s1)) == 0) {	// maybe use compare instead
+				ret.erase(i, strlen(s1));
+				ret.insert(i, s2, strlen(s2));
+				i += strlen(s2) - 1;
+			}
 		}
 	}
+	return ret;
 }
 
 int main(int argc, char *argv[]) {
@@ -31,14 +37,15 @@ int main(int argc, char *argv[]) {
 			fileContent.append(fileLine + "\n");
 		}
 		ifs.close();
+		// need to remove the last \n
+		// fileContent[strlen(fileContent) - 1] = '\0';
 	}
 	else {
 		std::cout << "couldn't open file.." << std::endl;
 		return 0;
 	}
-	// std::cout << fileContent << std::endl;
 
-	replace_string(fileContent, argv[2], argv[3]);
+	fileContent = replace_string(fileContent, argv[2], argv[3]);
 
 	// create the .replace version and copy the updated fileContent
 	char	*ofsName = argv[1];

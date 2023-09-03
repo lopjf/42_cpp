@@ -37,8 +37,7 @@ int main(int argc, char *argv[]) {
 			fileContent.append(fileLine + "\n");
 		}
 		ifs.close();
-		// need to remove the last \n
-		// fileContent[strlen(fileContent) - 1] = '\0';
+		fileContent.resize(fileContent.length() - 1);
 	}
 	else {
 		std::cout << "couldn't open file.." << std::endl;
@@ -52,7 +51,7 @@ int main(int argc, char *argv[]) {
 	strcat(ofsName, ".replace");
 	std::ofstream	ofs(ofsName);
 
-	ofs << fileContent << std::endl;
+	ofs << fileContent;
 	ofs.close();
 	return 0;
 }

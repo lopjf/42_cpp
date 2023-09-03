@@ -11,7 +11,7 @@ std::string	replace_string(std::string str, const char *s1, const char *s2) {
 
 	for (unsigned long i = 0; i < ret.length(); i++) {
 		if (ret[i] == s1[0]) {
-			if (std::strncmp(&ret[i], s1, strlen(s1)) == 0) {	// maybe use compare instead
+			if (std::strncmp(&ret[i], s1, strlen(s1)) == 0) {
 				ret.erase(i, strlen(s1));
 				ret.insert(i, s2, strlen(s2));
 				i += strlen(s2) - 1;

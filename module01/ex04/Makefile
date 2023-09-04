@@ -21,4 +21,13 @@ clean:
 
 re: fclean all
 
+test: re
+	./sed && echo
+	./sed file && echo
+	./sed file ok && echo
+	./sed fele hello "42 students" && echo
+	echo "hey hello, you're awesome" > file && cat file && echo
+	./sed file hello "42 students" && cat file.replace && echo
+	./sed file "you're awesome" "wassup?" && cat file.replace && echo
+
 .PHONY: all clean fclean re .cpp.o

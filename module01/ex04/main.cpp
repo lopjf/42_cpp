@@ -5,7 +5,6 @@
 // https://cplusplus.com/doc/tutorial/files/
 
 
-
 std::string	replace_string(std::string str, const char *s1, const char *s2) {
 	std::string ret = str;
 
@@ -37,10 +36,9 @@ int main(int argc, char *argv[]) {
 			fileContent.append(fileLine + "\n");
 		}
 		ifs.close();
-		fileContent.resize(fileContent.length() - 1);
 	}
 	else {
-		std::cout << "couldn't open file.." << std::endl;
+		std::cout << "couldn't open file.. Are you sure the file exist?" << std::endl;
 		return 0;
 	}
 

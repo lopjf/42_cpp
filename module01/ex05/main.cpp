@@ -4,16 +4,16 @@ int main() {
 	
 	Harl harl;
 
+	std::cout << std::endl << "Calling complain with: DEBUG" << std::endl;
+	harl.complain("DEBUG");
+	std::cout << std::endl << "Calling complain with: INFO" << std::endl;
+	harl.complain("INFO");
+	std::cout << std::endl << "Calling complain with: WARNING" << std::endl;
+	harl.complain("WARNING");
+	std::cout << std::endl << "Calling complain with: ERROR" << std::endl;
+	harl.complain("ERROR");
 	std::cout << std::endl << "Calling complain with: heyy" << std::endl;
 	harl.complain("heyy");
-	std::cout << std::endl << "Calling complain with: debug" << std::endl;
-	harl.complain("debug");
-	std::cout << std::endl << "Calling complain with: info" << std::endl;
-	harl.complain("info");
-	std::cout << std::endl << "Calling complain with: warning" << std::endl;
-	harl.complain("warning");
-	std::cout << std::endl << "Calling complain with: error" << std::endl;
-	harl.complain("error");
 
 	return 0;
 }

@@ -1,4 +1,4 @@
-NAME 			= zombie
+NAME 			= zombieHorde
 SRCS 			= ./zombieHorde.cpp ./Zombie.cpp ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f

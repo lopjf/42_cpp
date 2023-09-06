@@ -31,15 +31,7 @@ void Harl::complain( std::string level ) {
 	void (Harl::*w)(void);
 	void (Harl::*e)(void);
 
-	std::map<std::string, void (Harl::*)(void)> mapping;
-	mapping["DEBUG"] = d = &Harl::debug;
-	mapping["INFO"] = i = &Harl::info;
-	mapping["WARNING"] = w = &Harl::warning;
-	mapping["ERROR"] = e = &Harl::error;
+	// create an array of pointers to members
 
-	if (mapping.find(level) == mapping.end()) {
-		std::cout << "Invalid level: " << level << std::endl;
-		return;
-    }
 	(this->*mapping[level])();
 }

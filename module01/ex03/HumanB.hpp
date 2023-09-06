@@ -15,7 +15,7 @@ class HumanB {
         ~HumanB(void);
 
         void attack();
-        void setWeapon(Weapon type);
+        void setWeapon(Weapon &type);
 };
 
 #endif

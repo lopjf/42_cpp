@@ -21,8 +21,8 @@ class Fixed
 		void setRawBits( int const raw );
 
 	private:
-		int				_fpValue;
-		static const	_nbOfBits;
+		int					_fpValue;
+		static const int	_nbOfBits;
 };
 
 #endif

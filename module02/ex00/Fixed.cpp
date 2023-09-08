@@ -3,20 +3,20 @@
 // Constructors
 Fixed::Fixed() : _fpValue(0)
 {
-	std::cout << "\e[0;33mDefault Constructor called of Fixed\e[0m" << std::endl;
+	std::cout << "Default Constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &copy)
 {
+	std::cout << "Copy Constructor called" << std::endl;
 	(void) copy;
-	std::cout << "\e[0;33mCopy Constructor called of Fixed\e[0m" << std::endl;
 }
 
 
 // Destructor
 Fixed::~Fixed()
 {
-	std::cout << "\e[0;31mDestructor called of Fixed\e[0m" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 
@@ -27,10 +27,12 @@ Fixed & Fixed::operator=(const Fixed &assign)
 	return *this;
 }
 
-int getRawBits( void ) const {
-
+int Fixed::getRawBits( void ) const {
+	std::cout << "getRawBits member function called" << std::endl;
+	return 0;
 }
 
-void setRawBits( int const raw ) {
-
+void Fixed::setRawBits( int const raw ) {
+	(void)raw;
+	return;
 }

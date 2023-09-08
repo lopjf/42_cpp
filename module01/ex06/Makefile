@@ -2,7 +2,7 @@ NAME 			= harlFilter
 SRCS 			= ./Harl.cpp ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -std=c++98
+FLAGS			= -Wall -Wextra -Werror -std=c++98 -Wno-implicit-fallthrough
 CC				= c++
 
 .cpp.o:

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 #include <cstring>
 
 #ifndef HARL_H
@@ -13,12 +12,14 @@ class Harl {
 		void warning( void );
 		void error( void );
 
+
 	public:
 
 		Harl();
 		~Harl(void);
 
 		void complain( std::string level );
+
 };
 
 #endif

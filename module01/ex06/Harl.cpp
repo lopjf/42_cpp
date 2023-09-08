@@ -26,20 +26,28 @@ void Harl::error( void ) {
 
 void Harl::complain( std::string level ) {
 
-	void (Harl::*d)(void);
-	void (Harl::*i)(void);
-	void (Harl::*w)(void);
-	void (Harl::*e)(void);
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
 
-	std::map<std::string, void (Harl::*)(void)> mapping;
-	mapping["DEBUG"] = d = &Harl::debug;
-	mapping["INFO"] = i = &Harl::info;
-	mapping["WARNING"] = w = &Harl::warning;
-	mapping["ERROR"] = e = &Harl::error;
+	while (i < 4) {
+		if (levels[i].compare(level) == 0) {
+			break;
+		}
+		i++;
+	}
 
-	if (mapping.find(level) == mapping.end()) {
-		std::cout << "[ Probably complaining about insignificant problems ]\n" << std::endl;
-		return;
-    }
-	(this->*mapping[level])();
+	switch(i) {
+		case 0:
+			this->debug();
+		case 1:
+			this->info();
+		case 2:
+			this->warning();
+		case 3:
+			this->error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]\n" << std::endl;
+	}
+
 }

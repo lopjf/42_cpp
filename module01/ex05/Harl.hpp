@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 
 #ifndef HARL_H
 # define HARL_H
@@ -19,5 +18,7 @@ class Harl {
 
 		void complain( std::string level );
 };
+
+typedef	void (Harl::*t_func)(void);
 
 #endif

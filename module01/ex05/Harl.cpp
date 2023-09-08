@@ -26,12 +26,12 @@ void Harl::error( void ) {
 
 void Harl::complain( std::string level ) {
 
-	void (Harl::*d)(void);
-	void (Harl::*i)(void);
-	void (Harl::*w)(void);
-	void (Harl::*e)(void);
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	
+	t_func funcs[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	// create an array of pointers to members
+	for (int i = 0; i < 4; i++)
+		if (levels[i].compare(level) == 0)
+			(this->*funcs[i])();
 
-	(this->*mapping[level])();
 }

@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <cmath>
 
 class Fixed
 {
@@ -29,7 +30,8 @@ class Fixed
 		static const int	_nbOfBits = 8;
 };
 
-std::ostream & operator<<(std::ostream & o, float const & rhs);
+// Stream operators
+std::ostream & operator<<(std::ostream &stream, const Fixed &object);
 
 // An overload of the insertion («) operator that inserts a floating-point representation
 // of the fixed-point number into the output stream object passed as parameter.

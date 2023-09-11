@@ -42,59 +42,71 @@ Fixed & Fixed::operator=(const Fixed &assign)
 
 
 // Comparison operators
-Fixed & Fixed::operator>(const Fixed)
+bool Fixed::operator>(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() > a.toFloat())
+		return true;
+	return false;
 }
 
-Fixed & Fixed::operator<(const Fixed)
+bool Fixed::operator<(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() < a.toFloat())
+		return true;
+	return false;
 }
 
-Fixed & Fixed::operator>=(const Fixed)
+bool Fixed::operator>=(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() >= a.toFloat())
+		return true;
+	return false;
 }
 
-Fixed & Fixed::operator<=(const Fixed)
+bool Fixed::operator<=(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() <= a.toFloat())
+		return true;
+	return false;
 }
 
-Fixed & Fixed::operator==(const Fixed)
+bool Fixed::operator==(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() == a.toFloat())
+		return true;
+	return false;
 }
 
-Fixed & Fixed::operator!=(const Fixed)
+bool Fixed::operator!=(const Fixed &a)
 {
-	return *this;
+	if (this->toFloat() != a.toFloat())
+		return true;
+	return false;
 }
 
 		
 // Arithmetic operators
-Fixed Fixed::operator+(const Fixed &instance)
+Fixed Fixed::operator+(const Fixed &a)
 {
-	Fixed ret = (this->toFloat() + instance.toFloat());
+	Fixed ret = (this->toFloat() + a.toFloat());
 	return ret;
 }
 
-Fixed Fixed::operator-(const Fixed &instance)
+Fixed Fixed::operator-(const Fixed &a)
 {
-	Fixed ret = (this->toFloat() - instance.toFloat());
+	Fixed ret = (this->toFloat() - a.toFloat());
 	return ret;
 }
 
-Fixed Fixed::operator*(const Fixed &instance)
+Fixed Fixed::operator*(const Fixed &a)
 {
-	Fixed ret = (this->toFloat() * instance.toFloat());
+	Fixed ret = (this->toFloat() * a.toFloat());
 	return ret;
 }
 
-Fixed Fixed::operator/(const Fixed &instance)
+Fixed Fixed::operator/(const Fixed &a)
 {
-	Fixed ret = (this->toFloat() / instance.toFloat());
+	Fixed ret = (this->toFloat() / a.toFloat());
 	return ret;
 }
 
@@ -130,6 +142,37 @@ Fixed Fixed::operator--(int)
 	return pre;
 }
 
+Fixed & Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a.toFloat() > b.toFloat()) {
+		return b;
+	}
+	return a;
+}
+
+const Fixed & Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a.toFloat() > b.toFloat()) {
+		return b;
+	}
+	return a;
+}
+
+Fixed & Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a.toFloat() > b.toFloat()) {
+		return a;
+	}
+	return b;
+}
+
+const Fixed & Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a.toFloat() > b.toFloat()) {
+		return a;
+	}
+	return b;
+}
 
 int Fixed::getRawBits( void ) const {
 	// std::cout << "getRawBits member function called" << std::endl;

@@ -29,16 +29,16 @@ class Fixed
 		Fixed & operator!=(const Fixed);
 		
 		// Arithmetic operators
-		Fixed & operator+(const Fixed);
-		Fixed & operator-(const Fixed);
-		Fixed & operator*(const Fixed);
-		Fixed & operator/(const Fixed);
+		Fixed operator+(const Fixed &instance);
+		Fixed operator-(const Fixed &instance);
+		Fixed operator*(const Fixed &instance);
+		Fixed operator/(const Fixed &instance);
 
 		// increment/decrement operators
 		Fixed operator++();
-		Fixed & operator++(int);
+		Fixed operator++(int);
 		Fixed operator--();
-		Fixed & operator--(int);
+		Fixed operator--(int);
 
 
 		int getRawBits( void ) const;

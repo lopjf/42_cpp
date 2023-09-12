@@ -33,6 +33,4 @@ class Fixed
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Fixed &object);
 
-// An overload of the insertion («) operator that inserts a floating-point representation
-// of the fixed-point number into the output stream object passed as parameter.
 #endif

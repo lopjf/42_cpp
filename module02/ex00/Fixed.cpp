@@ -9,7 +9,7 @@ Fixed::Fixed() : _fpValue(0)
 Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "Copy Constructor called" << std::endl;
-	*this = copy;
+	this->setRawBits(copy.getRawBits());
 }
 
 

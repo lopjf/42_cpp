@@ -6,12 +6,6 @@ Fixed::Fixed(void) : _fpValue(0)
 	std::cout << "Default Constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &copy)
-{
-	std::cout << "Copy Constructor called" << std::endl;
-	*this = copy;
-}
-
 Fixed::Fixed(const int integer) {
 	std::cout << "Int constructor called" << std::endl;
 	this->setRawBits(integer * (1 << this->_nbOfBits));
@@ -24,6 +18,11 @@ Fixed::Fixed(const float number) {
 	// std::cout << this->getRawBits() << std::endl;
 }
 
+Fixed::Fixed(const Fixed &copy)
+{
+	std::cout << "Copy Constructor called" << std::endl;
+	this->setRawBits(copy.getRawBits());
+}
 
 // Destructor
 Fixed::~Fixed()

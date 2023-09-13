@@ -12,13 +12,8 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitP(10), _energyP(10), _at
 	std::cout << "\e[0;33mConstructor called of ClapTrap\e[0m" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &copy)
+ClapTrap::ClapTrap(const ClapTrap &copy) : _name(copy._name), _hitP(copy._hitP), _energyP(copy._energyP), _attackD(copy._attackD)
 {
-	this->_name = copy._name;
-	this->_hitP = copy._hitP;
-	this->_energyP = copy._energyP;
-	this->_attackD = copy._attackD;
-
 	std::cout << "\e[0;33mCopy Constructor called of ClapTrap\e[0m" << std::endl;
 }
 
@@ -38,7 +33,7 @@ ClapTrap & ClapTrap::operator=(const ClapTrap &assign)
 	this->_energyP = assign._energyP;
 	this->_attackD = assign._attackD;
 
-	std::cout << "0;33mCopy assignment operator called\e[0m" << std::endl;
+	std::cout << "0;33mCopy assignment operator called of ClapTrap\e[0m" << std::endl;
 	return *this;
 }
 
@@ -50,7 +45,7 @@ void ClapTrap::attack(const std::string& target) {
 		std::cout << "Claptrap " << this->_name << " doesn't have enough hit points to attack" << std::endl;
 	} else {
 		this->_energyP--;
-		std::cout << "Claptrap " << this->_name << " attacks " << target << ", causing " << this->_attackD << " points of damage! (╰ ‿ ╯)." << std::endl;
+		std::cout << "Claptrap " << this->_name << " attacks " << target << ", causing " << this->_attackD << " points of damage! (╰ ‿ ╯). It now has: " << this->_energyP << " energy points." << std::endl;
 	}
 }
 
@@ -65,7 +60,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitP < 1) {
 		std::cout << "Claptrap " << this->_name << " get attacked with " << amount << " attack damage. It died (︶︹︺)." << std::endl;
 	} else {
-		std::cout << "Claptrap " << this->_name << " get attacked with " << amount << " attack damage. It now has: " << this->_hitP << " hit points left." << std::endl;
+		std::cout << "Claptrap " << this->_name << " get attacked with " << amount << " attack damage. It now has: " << this->_hitP << " hit points." << std::endl;
 	}
 }
 
@@ -79,6 +74,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	} else {
 		this->_energyP--;
 		this->_hitP += amount;
-		std::cout << "Claptrap " << this->_name << " repairs itself, and get " << amount << " hit points back. It now has: " << this->_hitP << " hit points ( ͡° ل͜ ͡°)." << std::endl;
+		std::cout << "Claptrap " << this->_name << " repairs itself, and get " << amount << " hit points back. It now has: " << this->_hitP << " hit points, and: " << this->_energyP << " energy points." << std::endl;
 	}
 }

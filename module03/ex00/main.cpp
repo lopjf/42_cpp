@@ -2,14 +2,14 @@
 
 int main( void ) {
 
-	ClapTrap instance("loris");
+	ClapTrap instance("PewDiePie");
 
-	instance.attack("diogo");
+	instance.attack("mrBeast");
 	instance.takeDamage(5);
 	instance.takeDamage(5);
-	instance.attack("diogo");
+	instance.attack("mrBeast");
 	instance.beRepaired(4);
-	instance.attack("diogo");
+	instance.attack("mrBeast");
 
 	return 0;
 

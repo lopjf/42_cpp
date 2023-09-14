@@ -1,5 +1,5 @@
-NAME 			= scavtrap
-SRCS 			= ./ClapTrap.cpp ./ScavTrap.cpp ./main.cpp
+NAME 			= diamondtrap
+SRCS 			= ./ClapTrap.cpp ./ScavTrap.cpp ./FragTrap.cpp ./DiamondTrap.cpp ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -std=c++98

@@ -3,16 +3,28 @@
 // Constructors
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	this->_hitP = 100;
+	this->_energyP = 50;
+	this->_attackD = 20;
+	
 	std::cout << "\e[0;33mDefault Constructor called of ScavTrap\e[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
+	this->_hitP = 100;
+	this->_energyP = 50;
+	this->_attackD = 20;
+
 	std::cout << "\e[0;33mConstructor called of ScavTrap\e[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
+	this->_hitP = copy._hitP;
+	this->_energyP = copy._energyP;
+	this->_attackD = copy._attackD;
+
 	std::cout << "\e[0;33mCopy Constructor called of ScavTrap\e[0m" << std::endl;
 }
 
@@ -28,6 +40,9 @@ ScavTrap::~ScavTrap()
 ScavTrap & ScavTrap::operator=(const ScavTrap &assign)
 {
 	this->_name = assign._name;
+	this->_hitP = assign._hitP;
+	this->_energyP = assign._energyP;
+	this->_attackD = assign._attackD;
 
 	std::cout << "0;33mCopy assignment operator called of ScavTrap\e[0m" << std::endl;
 	return *this;

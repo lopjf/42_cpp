@@ -4,7 +4,6 @@
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
 	ClapTrap::_name = _name + "_clap_name";
-	this->_name = _name;
 	this->_hitP = FragTrap::defaultHitPoints;
 	this->_energyP = ScavTrap::defaultEnergyPoints;
 	this->_attackD = FragTrap::defaultAttackDamage;

@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 // Constructors
-Animal::Animal()
+Animal::Animal() : _type("Animal")
 {
 	std::cout << "\e[0;33mDefault Constructor called of Animal\e[0m" << std::endl;
 }
@@ -27,12 +27,13 @@ Animal & Animal::operator=(const Animal &assign)
 	return *this;
 }
 
-void const Animal::makeSound()
+void Animal::makeSound() const
 {
 	std::cout << "RRrrrRRRrrrrr" << std::endl;
 }
 
-void const Animal::getType()
+std::string Animal::getType() const
 {
-	std::cout << this->_type << std::endl;
+	// std::cout << this->_type << std::endl;
+	return this->_type;
 }

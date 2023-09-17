@@ -9,7 +9,7 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
-	(void) copy;
+	this->_type = copy._type;
 	std::cout << "\e[0;33mCopy Constructor called of Cat\e[0m" << std::endl;
 }
 
@@ -24,11 +24,11 @@ Cat::~Cat()
 // Operators
 Cat & Cat::operator=(const Cat &assign)
 {
-	(void) assign;
+	this->_type = assign._type;
 	return *this;
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
 	std::cout << "Miaw Miaw" << std::endl;
 }

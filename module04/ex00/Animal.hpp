@@ -17,9 +17,9 @@ class Animal
 		// Operators
 		Animal & operator=(const Animal &assign);
 		
-		void const makeSound();
+		virtual void makeSound() const;
 
-		void const getType();
+		std::string getType() const;
 
 	protected:
 

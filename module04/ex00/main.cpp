@@ -7,26 +7,33 @@
 int main()
 {
     const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
     std::cout << meta->getType() << " " << std::endl;
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    std::cout << dog->getType() << " " << std::endl;
+    std::cout << cat->getType() << " " << std::endl;
     meta->makeSound();
-    j->makeSound();
-    i->makeSound(); //will output the cat sound!
+    dog->makeSound();
+    cat->makeSound(); //will output the cat sound!
 
 
     const WrongAnimal* Wrongmeta = new WrongAnimal();
-    const WrongAnimal* Wrongi = new WrongCat();
+    const WrongAnimal* Wrongcat = new WrongCat();
+    const WrongCat* Wrongc = new WrongCat();
     std::cout << Wrongmeta->getType() << " " << std::endl;
-    std::cout << Wrongi->getType() << " " << std::endl;
+    std::cout << Wrongcat->getType() << " " << std::endl;
+    std::cout << Wrongc->getType() << " " << std::endl;
     Wrongmeta->makeSound();
-    Wrongi->makeSound(); //will output the cat sound!
+    Wrongcat->makeSound();  // will output animal sound!
+    Wrongc->makeSound(); //will output the cat sound!
+
 
 
     delete meta;
-    delete j;
-    delete i;
+    delete dog;
+    delete cat;
+    delete Wrongmeta;
+    delete Wrongcat;
+    delete Wrongc;
     return 0;
 }

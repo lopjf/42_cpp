@@ -12,7 +12,7 @@ class WrongAnimal
 		WrongAnimal(const WrongAnimal &copy);
 		
 		// Destructor
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 		
 		// Operators
 		WrongAnimal & operator=(const WrongAnimal &assign);

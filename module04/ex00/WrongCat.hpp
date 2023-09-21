@@ -13,7 +13,7 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat &copy);
 		
 		// Destructor
-		~WrongCat();
+		virtual ~WrongCat();
 		
 		// Operators
 		WrongCat & operator=(const WrongCat &assign);

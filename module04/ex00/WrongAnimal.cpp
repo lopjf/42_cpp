@@ -8,10 +8,9 @@ WrongAnimal::WrongAnimal() : _type("WrongAnimal")
 
 WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 {
-	this->_type = copy._type;
+	*this = copy;
 	std::cout << "\e[0;33mCopy Constructor called of WrongAnimal\e[0m" << std::endl;
 }
-
 
 // Destructor
 WrongAnimal::~WrongAnimal()
@@ -24,6 +23,7 @@ WrongAnimal::~WrongAnimal()
 WrongAnimal & WrongAnimal::operator=(const WrongAnimal &assign)
 {
 	this->_type = assign._type;
+	std::cout << "\e[0;33mAssignation operator Constructor called of WrongAnimal\e[0m" << std::endl;
 	return *this;
 }
 
@@ -34,6 +34,5 @@ void WrongAnimal::makeSound() const
 
 std::string WrongAnimal::getType() const
 {
-	// std::cout << this->_type << std::endl;
 	return this->_type;
 }

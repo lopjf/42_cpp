@@ -9,10 +9,9 @@ WrongCat::WrongCat() : WrongAnimal()
 
 WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
-	this->_type = copy._type;
+	*this = copy;
 	std::cout << "\e[0;33mCopy Constructor called of WrongCat\e[0m" << std::endl;
 }
-
 
 // Destructor
 WrongCat::~WrongCat()
@@ -25,6 +24,7 @@ WrongCat::~WrongCat()
 WrongCat & WrongCat::operator=(const WrongCat &assign)
 {
 	this->_type = assign._type;
+	std::cout << "\e[0;33mAssignation operator Constructor called of WrongCat\e[0m" << std::endl;
 	return *this;
 }
 

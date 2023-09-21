@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -20,8 +21,12 @@ class Dog : public Animal
 		
 		virtual void makeSound() const;
 		
+		std::string getBrain(int) const;
+		void setBrain(int, std::string);
+		
 	private:
 		
+		Brain *_brain;
 };
 
 #endif

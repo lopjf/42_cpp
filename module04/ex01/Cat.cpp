@@ -11,9 +11,8 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
-	// this->_type = copy._type;
-	// this->_brain = new Brain(*(copy._brain));
-	*this = copy;
+	this->_type = copy._type;
+	this->_brain = new Brain(*copy._brain);
 	std::cout << "\e[0;33mCopy Constructor called of Cat\e[0m" << std::endl;
 }
 
@@ -30,7 +29,7 @@ Cat::~Cat()
 Cat & Cat::operator=(const Cat &assign)
 {
 	this->_type = assign._type;
-	this->_brain = assign._brain;
+	this->_brain = new Brain(*assign._brain);
 	std::cout << "\e[0;33mAssignation operator Constructor called of Cat\e[0m" << std::endl;
 	return *this;
 }

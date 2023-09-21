@@ -8,7 +8,7 @@ Animal::Animal() : _type("Animal")
 
 Animal::Animal(const Animal &copy)
 {
-	*this = copy;
+	this->_type = copy._type;
 	std::cout << "\e[0;33mCopy Constructor called of Animal\e[0m" << std::endl;
 }
 

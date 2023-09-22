@@ -17,7 +17,7 @@ class Brain
 		// Operators
 		Brain & operator=(const Brain &assign);
 
-		std::string getIdea(int) const;
+		std::string const getIdea(int) const;
 		void setIdea(int, std::string);
 
 	private:

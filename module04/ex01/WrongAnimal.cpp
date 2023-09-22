@@ -32,7 +32,7 @@ void WrongAnimal::makeSound() const
 	std::cout << "RRrrrRRRrrrrr" << std::endl;
 }
 
-std::string WrongAnimal::getType() const
+std::string const WrongAnimal::getType() const
 {
 	return this->_type;
 }

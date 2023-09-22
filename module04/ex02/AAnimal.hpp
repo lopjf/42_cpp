@@ -20,7 +20,7 @@ class AAnimal
 		
 		virtual void makeSound() const = 0;
 
-		std::string getType() const;
+		std::string const getType() const;
 
 	protected:
 		std::string _type;

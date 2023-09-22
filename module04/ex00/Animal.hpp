@@ -19,7 +19,7 @@ class Animal
 		
 		virtual void makeSound() const;
 
-		std::string getType() const;
+		std::string const getType() const;
 
 	protected:
 		std::string _type;

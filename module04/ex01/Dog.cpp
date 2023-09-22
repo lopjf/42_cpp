@@ -33,7 +33,7 @@ Dog & Dog::operator=(const Dog &assign)
 	return *this;
 }
 
-std::string Dog::getBrain(int i) const
+std::string const Dog::getBrain(int i) const
 {
 	return (this->_brain->getIdea(i));
 }

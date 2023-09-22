@@ -34,7 +34,7 @@ Cat & Cat::operator=(const Cat &assign)
 	return *this;
 }
 
-std::string Cat::getBrain(int i) const
+std::string const Cat::getBrain(int i) const
 {
 	return (this->_brain->getIdea(i));
 }

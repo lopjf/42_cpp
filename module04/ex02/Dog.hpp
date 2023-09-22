@@ -21,7 +21,7 @@ class Dog : public AAnimal
 		
 		virtual void makeSound() const;
 		
-		std::string getBrain(int) const;
+		std::string const getBrain(int) const;
 		void setBrain(int, std::string);
 		
 	private:

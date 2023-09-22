@@ -34,7 +34,7 @@ Brain & Brain::operator=(const Brain &assign)
 }
 
 
-std::string Brain::getIdea(int i) const
+std::string const Brain::getIdea(int i) const
 {
 	return (this->_ideas[i]);
 }

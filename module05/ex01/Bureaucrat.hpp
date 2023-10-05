@@ -3,6 +3,9 @@
 
 # include <iostream>
 # include <string>
+#include "Form.hpp"
+
+// class Form;
 
 class Bureaucrat
 {
@@ -35,6 +38,7 @@ class Bureaucrat
 		// Methods
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(const Form &form);
 
 	private:
 		const std::string _name;

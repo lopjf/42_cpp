@@ -91,6 +91,13 @@ void Bureaucrat::decrementGrade()
 		std::cout << e.what() << std::endl;
 	}
 }
+void Bureaucrat::signForm(const Form &form)
+{
+	if (form.getSign())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << this->getName() << " has a grade " << this->getGrade() << " and " << form.getName() << " requires a grade " << form.getRequiredGrade() << " to be signed." << std::endl;
+}
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Bureaucrat &object)

@@ -3,30 +3,26 @@
 // Constructors
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default")
 {
-	// std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy.getName(), copy.getRequiredGrade(), copy.getGradeExecute()), _target(copy.getTarget())
 {
-	// std::cout << "\e[0;33mCopy Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
-	// std::cout << "\e[0;33mConstructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	// std::cout << "\e[0;31mDestructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 
 // Operators
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &assign)
 {
-	(void) assign;
+	AForm::operator=(assign);
 	return *this;
 }
 
@@ -40,5 +36,16 @@ const std::string ShrubberyCreationForm::getTarget() const
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	checkExecute(executor);
-	std::cout << "Do things..." << std::endl;
+
+	std::string filename = getTarget() + "_shrubbery";
+	//c_str() returns a pointer to an array that contains a null-terminated sequence of characters (i.e., a C-string) representing the current value of the string object.
+	std::ofstream ofs(filename.c_str());
+	if (ofs.is_open())
+	{
+		ofs << "               ,@@@@@@@,\n       ,,,.   ,@@@@@@/@@,  .oo8888o.\n    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n   `&%\\ ` /%&'    |.|        \\ '|8'\n       |o|        | |         | |\n       |.|        | |         | |\n_//__\\/._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n" << std::endl;;
+	}
+	else
+	{
+		std::cout << "Error: could not open file." << std::endl;
+	}
 }

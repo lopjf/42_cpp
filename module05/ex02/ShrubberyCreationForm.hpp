@@ -2,7 +2,9 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
+# include <fstream>
 # include <string>
+# include <cstring>
 #include "AForm.hpp"
 
 class AForm;

@@ -3,23 +3,23 @@
 // Constructors
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default")
 {
-	std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mDefault Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy.getName(), copy.getRequiredGrade(), copy.getGradeExecute()), _target(copy.getTarget())
 {
-	std::cout << "\e[0;33mCopy Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mCopy Constructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
-	std::cout << "\e[0;33mConstructor called of ShrubberyCreationForm\e[0m" << std::endl;
+	// std::cout << "\e[0;33mConstructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "\e[0;31mDestructor called of ShrubberyCreationForm\e[0m" << std::endl;
+	// std::cout << "\e[0;31mDestructor called of ShrubberyCreationForm\e[0m" << std::endl;
 }
 
 
@@ -39,11 +39,6 @@ const std::string ShrubberyCreationForm::getTarget() const
 // Methods
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	// try {
-	// 	Aform::checkExecute(executor);
-	// } catch (std::exception) {
-	// 	std::cout << e.what() << std::endl;
-	// }
-	(void)executor;
+	checkExecute(executor);
 	std::cout << "Do things..." << std::endl;
 }

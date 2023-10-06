@@ -90,12 +90,13 @@ void AForm::checkGrade(int grade)
 	else if (grade > 150)
 		throw AForm::GradeTooLowException();
 }
-void AForm::checkExecute(Bureaucrat const & executor)
+void AForm::checkExecute(Bureaucrat const & executor) const
 {
 	if (!getSign())
 		throw AForm::FormNotSigned();
 	else if (executor.getGrade() > getGradeExecute())
 		throw AForm::GradeTooLowException();
+	// (void)executor;
 }
 
 

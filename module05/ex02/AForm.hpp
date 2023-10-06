@@ -46,7 +46,7 @@ class AForm
 		void beSigned(Bureaucrat &bureaucrat);
 		void checkGrade(int grade);
 		virtual void execute(Bureaucrat const & executor) const = 0;
-		void checkExecute(Bureaucrat const & executor);
+		void checkExecute(Bureaucrat const & executor) const;
 
 	private:
 		const std::string _name;

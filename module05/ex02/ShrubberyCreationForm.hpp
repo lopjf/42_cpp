@@ -5,7 +5,7 @@
 # include <string>
 #include "AForm.hpp"
 
-class Aform;
+class AForm;
 
 class ShrubberyCreationForm : public AForm
 {

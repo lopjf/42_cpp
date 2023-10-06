@@ -13,10 +13,20 @@ int	main(void)
     std::cout << b3 << std::endl << std::endl;
 
     ShrubberyCreationForm f1("Home");
+    // RobotomyRequestForm f2("Home");
+    // PresidentialPardonForm f3("Home");
     std::cout << f1 << std::endl;
+    // std::cout << f2 << std::endl;
+    // std::cout << f3 << std::endl << std::endl;
     
+	b1.executeForm(f1);
+    std::cout << f1 << std::endl << std::endl;
+
     f1.beSigned(b1);
     std::cout << f1 << std::endl << std::endl;
 
+	b1.executeForm(f1);
+    std::cout << f1 << std::endl << std::endl;
+	
 	return (0);
 }

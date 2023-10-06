@@ -74,12 +74,12 @@ void Bureaucrat::decrementGrade()
 		std::cout << e.what() << std::endl;
 	}
 }
-void Bureaucrat::signForm(AForm &Aform)
+void Bureaucrat::signForm(AForm &form)
 {
-	if (Aform.getSign())
-		std::cout << getName() << " signed " << Aform.getName() << std::endl;
+	if (form.getSign())
+		std::cout << getName() << " signed " << form.getName() << std::endl;
 	else
-		std::cout << getName() << " couldn’t sign " << Aform.getName() << " because " << getName() << " has a grade " << getGrade() << " and " << Aform.getName() << " requires a grade " << Aform.getRequiredGrade() << " to be signed." << std::endl;
+		std::cout << getName() << " couldn’t sign " << form.getName() << " because " << getName() << " has a grade " << getGrade() << " and " << form.getName() << " requires a grade " << form.getRequiredGrade() << " to be signed." << std::endl;
 }
 void Bureaucrat::checkGrade(int grade)
 {
@@ -88,6 +88,14 @@ void Bureaucrat::checkGrade(int grade)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+}
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 // Stream operators

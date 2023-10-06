@@ -96,7 +96,6 @@ void AForm::checkExecute(Bureaucrat const & executor) const
 		throw AForm::FormNotSigned();
 	else if (executor.getGrade() > getGradeExecute())
 		throw AForm::GradeTooLowException();
-	// (void)executor;
 }
 
 

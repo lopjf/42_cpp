@@ -20,13 +20,12 @@ int	main(void)
     // std::cout << f3 << std::endl << std::endl;
     
 	b1.executeForm(f1);
-    std::cout << f1 << std::endl << std::endl;
 
     f1.beSigned(b1);
     std::cout << f1 << std::endl << std::endl;
 
+	b2.executeForm(f1);
 	b1.executeForm(f1);
-    std::cout << f1 << std::endl << std::endl;
 	
 	return (0);
 }

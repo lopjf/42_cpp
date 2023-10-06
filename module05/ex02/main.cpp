@@ -1,0 +1,22 @@
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
+
+int	main(void)
+{
+	Bureaucrat b1("Elon", 2);
+    Bureaucrat b2("Bill", 150);
+    Bureaucrat b3("Steve", 42);
+    std::cout << b1 << std::endl;
+    std::cout << b2 << std::endl;
+    std::cout << b3 << std::endl << std::endl;
+
+    ShrubberyCreationForm f1("Home");
+    std::cout << f1 << std::endl;
+    
+    f1.beSigned(b1);
+    std::cout << f1 << std::endl << std::endl;
+
+	return (0);
+}

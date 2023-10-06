@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -8,19 +8,19 @@
 // need to use forward declaration to solve the circular dependency issue.
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	public:
 		// Constructors
-		Form();
-		Form(const Form &copy);
-		Form(const std::string name, const int requiredGrade, const int gradeExecute);
+		AForm();
+		AForm(const AForm &copy);
+		AForm(const std::string name, const int requiredGrade, const int gradeExecute);
 		
 		// Destructor
-		~Form();
+		virtual ~AForm();
 		
 		// Operators
-		Form & operator=(const Form &assign);
+		AForm & operator=(const AForm &assign);
 		
 		// Getters / Setters
 		const std::string getName() const;
@@ -37,10 +37,16 @@ class Form
 			public:
 				virtual const char* what() const throw();
 		};
+		class FormNotSigned : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 		
 		// Methods
 		void beSigned(Bureaucrat &bureaucrat);
 		void checkGrade(int grade);
+		virtual void execute(Bureaucrat const & executor) const = 0;
+		void checkExecute(Bureaucrat const & executor);
 
 	private:
 		const std::string _name;
@@ -51,6 +57,6 @@ class Form
 };
 
 // Stream operators
-std::ostream & operator<<(std::ostream &stream, const Form &object);
+std::ostream & operator<<(std::ostream &stream, const AForm &object);
 
 #endif

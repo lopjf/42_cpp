@@ -35,6 +35,7 @@ class Bureaucrat
 		// Methods
 		void incrementGrade();
 		void decrementGrade();
+		void checkGrade(int grade);
 
 	private:
 		const std::string _name;

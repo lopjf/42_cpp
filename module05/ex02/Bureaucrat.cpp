@@ -74,6 +74,13 @@ void Bureaucrat::decrementGrade()
 		std::cout << e.what() << std::endl;
 	}
 }
+void Bureaucrat::signForm(AForm &Aform)
+{
+	if (Aform.getSign())
+		std::cout << getName() << " signed " << Aform.getName() << std::endl;
+	else
+		std::cout << getName() << " couldn’t sign " << Aform.getName() << " because " << getName() << " has a grade " << getGrade() << " and " << Aform.getName() << " requires a grade " << Aform.getRequiredGrade() << " to be signed." << std::endl;
+}
 void Bureaucrat::checkGrade(int grade)
 {
 	// if we catch the error here. It will still initialize the object with the default values.

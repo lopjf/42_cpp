@@ -3,75 +3,29 @@
 // Constructors
 Form::Form() : _name("Default"), _sign(false), _requiredGrade(1), _gradeExecute(1)
 {
-	// std::cout << "\e[0;33mDefault Constructor called of Form\e[0m" << std::endl;
 }
 
 Form::Form(const Form &copy) : _name(copy.getName()), _sign(copy.getSign()), _requiredGrade(copy.getRequiredGrade()), _gradeExecute(copy.getGradeExecute())
 {
-	// _name = copy.getName();
-	// _signed = copy.getSigned();
-	// _requiredGrade = copy.getRequiredGrade();
-	// _gradeExecute = copy.getGradeExecute();
-	// std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
 }
 
 Form::Form(const std::string name, const int requiredGrade, const int gradeExecute) : _name(name), _sign(false), _requiredGrade(requiredGrade), _gradeExecute(gradeExecute)
 {
-
-
-	// Can't have initialise a const variable in the constructor body. So that bellow doesn't work.
-
-
-// init requiredGrade
-// 	try {
-// 		if (requiredGrade < 1)
-// 			throw Form::GradeTooHighException();
-// 		else if (requiredGrade > 150)
-// 			throw Form::GradeTooLowException();
-// 		this->_requiredGrade = requiredGrade;
-// 	} catch (GradeTooHighException &e) {
-// 		std::cout << e.what() << std::endl;
-// 		this->_requiredGrade = 1;
-// 	} catch (GradeTooLowException &e) {
-// 		std::cout << e.what() << std::endl;
-// 		this->_requiredGrade = 1;
-// 	}
-
-// // init gradeExecute
-// 	try {
-// 		if (gradeExecute < 1)
-// 			throw Form::GradeTooHighException();
-// 		else if (gradeExecute > 150)
-// 			throw Form::GradeTooLowException();
-// 		this->_gradeExecute = gradeExecute;
-// 	} catch (GradeTooHighException &e) {
-// 		std::cout << e.what() << std::endl;
-// 	} catch (GradeTooLowException &e) {
-// 		std::cout << e.what() << std::endl;
-// 	}
-
-	// _name = name;
-	// _signed = sign;
-	// _requiredGrade = requiredGrade;
-	// _gradeExecute = gradeExecute;
-	// std::cout << "\e[0;33mFields Constructor called of Form\e[0m" << std::endl;
+	checkGrade(requiredGrade);
+	checkGrade(gradeExecute);
 }
 
 
 // Destructor
 Form::~Form()
 {
-	// std::cout << "\e[0;31mDestructor called of Form\e[0m" << std::endl;
 }
 
 
 // Operators
 Form & Form::operator=(const Form &assign)
 {
-	// _name = assign.getName();
 	_sign = assign.getSign();
-	// _requiredGrade = assign.getRequiredGrade();
-	// _gradeExecute = assign.getGradeExecute();
 	return *this;
 }
 
@@ -98,33 +52,43 @@ int Form::getGradeExecute() const
 // Exceptions
 const char * Form::GradeTooHighException::what() const throw()
 {
-	return "Grade too high";
+	return "Grade too high.";
 }
 const char * Form::GradeTooLowException::what() const throw()
 {
-	return "Grade too low, Form can't be signed";
+	return "Grade too low.";
 }
 
 
 // Methods
-void Form::beSigned(const Bureaucrat &bureaucrat)
+void Form::beSigned(Bureaucrat &bureaucrat)
 {
 	try {
 		if (bureaucrat.getGrade() <= this->getRequiredGrade()) {
 			this->_sign = true;
 			bureaucrat.signForm(*this);
 		}
-		else
+		else {
+			bureaucrat.signForm(*this);
 			throw Form::GradeTooLowException();
+		}
 	}
 	catch (GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
 	}
 }
+void Form::checkGrade(int grade)
+{
+	// if we catch the error here. It will still initialize the object with the default values.
+	if (grade < 1)
+		throw Form::GradeTooHighException();
+	else if (grade > 150)
+		throw Form::GradeTooLowException();
+}
 
 // Stream operators
 std::ostream & operator<<(std::ostream &stream, const Form &object)
 {
-	stream << "Form " << object.getName() << " is " << (object.getSign() ? "signed" : "not signed") << " and requires a grade " << object.getRequiredGrade() << " to be signed and a grade " << object.getGradeExecute() << " to be executed." << std::endl;
+	stream << "Form " << object.getName() << " is " << (object.getSign() ? "signed" : "not signed") << ". It requires a grade " << object.getRequiredGrade() << " to be signed and a grade " << object.getGradeExecute() << " to be executed.";
 	return stream;
 }

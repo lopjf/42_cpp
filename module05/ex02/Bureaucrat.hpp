@@ -3,10 +3,10 @@
 
 # include <iostream>
 # include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // need to use forward declaration to solve the circular dependency issue.
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -39,7 +39,7 @@ class Bureaucrat
 		// Methods
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form &form);
+		void signForm(AForm &Aform);
 		void checkGrade(int grade);
 
 	private:

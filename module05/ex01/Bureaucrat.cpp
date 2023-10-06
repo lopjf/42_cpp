@@ -3,47 +3,30 @@
 // Constructors
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
-	// std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
 {
-	this->_grade = copy._grade;
-	// std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << std::endl;
+	_grade = copy._grade;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
-	try {
-		if (grade < 1)
-			throw Bureaucrat::GradeTooHighException();
-		else if (grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-		this->_grade = grade;
-	} catch (GradeTooHighException &e) {
-		std::cout << e.what() << std::endl;
-		this->_grade = 1;
-	} catch (GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
-		this->_grade = 150;
-	}
-	
-	// std::cout << "\e[0;33mFields Constructor called of Bureaucrat\e[0m" << std::endl;
+	checkGrade(grade);
+	_grade = grade;
 }
 
 
 // Destructor
 Bureaucrat::~Bureaucrat()
 {
-	// std::cout << "\e[0;31mDestructor called of Bureaucrat\e[0m" << std::endl;
 }
 
 
 // Operators
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign)
 {
-	// can't assign to _name because it is const.
-	this->_grade = assign._grade;
+	_grade = assign._grade;
 	return *this;
 }
 
@@ -60,11 +43,11 @@ const char * Bureaucrat::GradeTooLowException::what() const throw()
 // Getters
 const std::string Bureaucrat::getName() const
 {
-	return this->_name;
+	return _name;
 }
 int Bureaucrat::getGrade() const
 {
-	return this->_grade;
+	return _grade;
 }
 
 // Methods
@@ -72,9 +55,9 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::incrementGrade()
 {
 	try {
-		if (this->_grade <= 1)
+		if (_grade <= 1)
 			throw Bureaucrat::GradeTooHighException();
-		this->_grade--;
+		_grade--;
 	}
 	catch (GradeTooHighException &e) {
 		std::cout << e.what() << std::endl;
@@ -83,20 +66,28 @@ void Bureaucrat::incrementGrade()
 void Bureaucrat::decrementGrade()
 {
 	try {
-		if (this->_grade == 150)
+		if (_grade == 150)
 			throw Bureaucrat::GradeTooLowException();
-		this->_grade++;
+		_grade++;
 	}
 	catch (GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
 	}
 }
-void Bureaucrat::signForm(const Form &form)
+void Bureaucrat::signForm(Form &form)
 {
 	if (form.getSign())
-		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		std::cout << getName() << " signed " << form.getName() << std::endl;
 	else
-		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << this->getName() << " has a grade " << this->getGrade() << " and " << form.getName() << " requires a grade " << form.getRequiredGrade() << " to be signed." << std::endl;
+		std::cout << getName() << " couldn’t sign " << form.getName() << " because " << getName() << " has a grade " << getGrade() << " and " << form.getName() << " requires a grade " << form.getRequiredGrade() << " to be signed." << std::endl;
+}
+void Bureaucrat::checkGrade(int grade)
+{
+	// if we catch the error here. It will still initialize the object with the default values.
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 // Stream operators

@@ -27,17 +27,27 @@ Intern & Intern::operator=(const Intern &assign)
 // Methods
 AForm * Intern::makeForm(std::string name, std::string target)
 {
-	AForm *form;
-	if (name == "ShrubberyCreationForm")
-		form = new ShrubberyCreationForm(target);
-	else if (name == "RobotomyRequestForm")
-		form = new RobotomyRequestForm(target);
-	else if (name == "PresidentialPardonForm")
-		form = new PresidentialPardonForm(target);
-	else {
-		std::cout << "The form can't be created, it doesn't exist." << std::endl;
-		return NULL;
+	std::string form[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	
+	int i = 0;
+	while (i < 3) {
+		if (form[i].compare(name) == 0)
+			break;
+		i++;
 	}
-	std::cout << "Intern creates: " << name << std::endl;
-	return form;
+
+	switch(i) {
+		case 0:
+			std::cout << "Intern creates the Shrubbery Creation Form" << std::endl;
+			return (new ShrubberyCreationForm(target));
+		case 1:
+			std::cout << "Intern creates the Robotomy Request Form" << std::endl;
+			return (new RobotomyRequestForm(target));
+		case 2:
+			std::cout << "Intern creates the Presidential Pardon Form" << std::endl;
+			return (new PresidentialPardonForm(target));
+		default:
+			std::cout << "The form can't be created, it doesn't exist." << std::endl;
+	}
+	return NULL;
 }

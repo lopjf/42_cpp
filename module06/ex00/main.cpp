@@ -1,11 +1,18 @@
 #include "ScalarConverter.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	ScalarConverter sc;
+	if (ac < 2)
+    {
+        std::cout << "No argument provided." << std::endl;
+        return (1);
+    } else if (ac > 2) {
+        std::cout << "Too many arguments provided." << std::endl;
+        return (1);
+    }
 
-    sc.convert("0");
-    // sc.convert(const_cast<std::string>42);
+    ScalarConverter sc;
+    sc.convert(std::string(av[1]));
 
     return (0);
 }

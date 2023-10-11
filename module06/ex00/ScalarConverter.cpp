@@ -20,8 +20,18 @@ ScalarConverter::~ScalarConverter()
 // Methods
 void ScalarConverter::convert(std::string str)
 {
-	
-	std::cout << "convert called with: " << str << std::endl;
+
+	char *pEnd;
+
+	// char	cha;
+	// int		num;
+	// float	flo;
+	double	dou;
+
+	// use strtod (for float and double?)
+	dou = strtod(&str[0], &pEnd);
+
+	std::cout << dou << std::endl;
 }
 
 

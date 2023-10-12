@@ -3,11 +3,19 @@
 
 # include <iostream>
 # include <string>
-#include <stdlib.h>
+# include <stdlib.h>
+# include <limits>
+# include <iomanip>
 
 class ScalarConverter
 {
 	public:
+	
+		// Methods
+		void static convert(std::string str);
+		
+	private:
+		
 		// Constructors
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &copy);
@@ -17,12 +25,9 @@ class ScalarConverter
 		
 		// Operators
 		ScalarConverter & operator=(const ScalarConverter &assign);
-		
-		// Methods
-		void convert(std::string str);
-		
-	private:
-		
 };
+
+bool isNumber(const std::string str);
+
 
 #endif

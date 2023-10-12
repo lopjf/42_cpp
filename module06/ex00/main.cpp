@@ -1,5 +1,7 @@
 #include "ScalarConverter.hpp"
 
+class ScalarConverter;
+
 int	main(int ac, char **av)
 {
 	if (ac < 2)
@@ -11,8 +13,7 @@ int	main(int ac, char **av)
         return (1);
     }
 
-    ScalarConverter sc;
-    sc.convert(std::string(av[1]));
+    ScalarConverter::convert(std::string(av[1]));
 
     return (0);
 }

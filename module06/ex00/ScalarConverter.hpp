@@ -12,7 +12,8 @@ class ScalarConverter
 	public:
 	
 		// Methods
-		void static convert(std::string str);
+		// has to be static so we can call it from main without creating an instance of the class
+		static void convert(std::string str);
 		
 	private:
 		

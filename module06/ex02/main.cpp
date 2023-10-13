@@ -2,7 +2,6 @@
 # include <string>
 # include <cstdlib> 
 # include <ctime>
-# include <typeinfo>
 
 class Base
 {
@@ -52,18 +51,19 @@ void identify(Base* p) {
 
 void identify(Base& p) {
     // Since references can't be NULL, it'll run a bad_cast exception if it fails
+    // catch (...) catch any exceptions.
     try {
         dynamic_cast<A &>(p);
         std::cout << "p points to the A object type." << std::endl;
-    } catch (const std::bad_cast & e) {}
+    } catch (...) {}
     try {
         dynamic_cast<B &>(p);
         std::cout << "p points to the B object type." << std::endl;
-    } catch (const std::bad_cast & e) {}
+    } catch (...) {}
     try {
         dynamic_cast<C &>(p);
         std::cout << "p points to the C object type." << std::endl;
-    } catch (const std::bad_cast & e) {}
+    } catch (...) {}
 }
 
 

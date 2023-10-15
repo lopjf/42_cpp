@@ -8,8 +8,8 @@ int	main(void)
     swap(a, b);
     std::cout << "After swap: a = " << a << ", b = " << b << std::endl;
 
-    std::cout << "min_result = " << min(a, b) << std::endl;
-    std::cout << "max_result = " << max(a, b) << std::endl;
+    std::cout << "min_result = " << min<int>(a, b) << std::endl;
+    std::cout << "max_result = " << max<int>(a, b) << std::endl;
 
 
     std::cout << std::endl << "-----------------" << std::endl << std::endl;
@@ -21,8 +21,8 @@ int	main(void)
     swap(c, d);
     std::cout << "Before swap: c = " << c << ", d = " << d << std::endl;
 
-    std::cout << "min_result = " << min(c, d) << std::endl;
-    std::cout << "max_result = " << max(c, d) << std::endl;
+    std::cout << "min_result = " << min<float>(c, d) << std::endl;
+    std::cout << "max_result = " << max<float>(c, d) << std::endl;
 
 
     std::cout << std::endl << "-----------------" << std::endl << std::endl;
@@ -34,8 +34,8 @@ int	main(void)
     swap(e, f);
     std::cout << "Before swap: e = " << e << ", f = " << f << std::endl;
 
-    std::cout << "min_result = " << min(e, f) << std::endl;
-    std::cout << "max_result = " << max(e, f) << std::endl;
+    std::cout << "min_result = " << min<char>(e, f) << std::endl;
+    std::cout << "max_result = " << max<char>(e, f) << std::endl;
 
     return 0;
 }

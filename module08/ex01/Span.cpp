@@ -3,33 +3,28 @@
 // Constructors
 Span::Span() :	_n(0)
 {
-	std::cout << "\e[0;33mDefault Constructor called of Span\e[0m" << std::endl;
 }
 
 Span::Span(const Span &copy)
 {
 	_n = copy._n;
 	_arr = copy._arr;
-	std::cout << "\e[0;33mCopy Constructor called of Span\e[0m" << std::endl;
 }
 
 Span::Span(unsigned int N) : _n(N)
 {
-	std::cout << "\e[0;33mFields Constructor called of Span\e[0m" << std::endl;
 }
 
 
 // Destructor
 Span::~Span()
 {
-	std::cout << "\e[0;31mDestructor called of Span\e[0m" << std::endl;
 }
 
 
 // Operators
 Span & Span::operator=(const Span &assign)
 {
-	std::cout << "\e[0;33mAssignation operator called of Span\e[0m" << std::endl;
 	_n = assign._n;
 	_arr = assign._arr;
 	return *this;

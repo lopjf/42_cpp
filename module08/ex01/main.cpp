@@ -13,6 +13,7 @@ int getRamdom() {
 
 int main(void)
 {
+    std::cout << "test 1:" << std::endl;
     {
         Span sp = Span(5);
         int ints[] = {6, 3, 17};
@@ -23,6 +24,7 @@ int main(void)
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
     }
+    std::cout << std::endl << "test 2:" << std::endl;
     {
         Span sp = Span(1);
 
@@ -53,6 +55,7 @@ int main(void)
             std::cout << e.what() << std::endl;
         }
     }
+    std::cout << std::endl << "test 3:" << std::endl;
     {
 		Span sp(10000);
         

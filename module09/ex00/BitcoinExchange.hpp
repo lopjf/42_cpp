@@ -4,10 +4,13 @@
 # include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include <string>
-#include <limits.h>
-#include <vector>
 #include <cstring>
+#include <limits.h>
+#include <cstring>
+#include <map>
+#include <string>
+#include <cstdlib>
+#include <sstream>
 
 class BitcoinExchange
 {
@@ -31,22 +34,15 @@ class BitcoinExchange
 			public:
 				virtual const char *what() const throw();
 		};
-		class NegativeNumber : public std::exception {
-			public:
-				virtual const char *what() const throw();
-		};
-		class OutOfBondNumber : public std::exception {
-			public:
-				virtual const char *what() const throw();
-		};
 
 		// Methods
 		// has to be static so we can call it from main without creating an instance of the class
-		static void getValue(char *fileName);
+		static void getValue(const char *fileName);
 	private:
 
-		static void getPrice(std::string str);
-		
+		static void getPrice(const std::string str, const std::map<std::string, float> csvContent);
+		static std::string ft_itoa(const long int number);
+		static float getClosestLowestValue(const std::map<std::string, float> &csvContent, const std::string inputDate);
 };
 
 #endif

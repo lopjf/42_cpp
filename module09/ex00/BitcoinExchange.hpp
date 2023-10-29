@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string>
 #include <limits.h>
+#include <vector>
+#include <cstring>
 
 class BitcoinExchange
 {
@@ -21,7 +23,11 @@ class BitcoinExchange
 		BitcoinExchange & operator=(const BitcoinExchange &assign);
 		
 		// Exceptions
-		class WrongDate : public std::exception {
+		class NoFile : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+		class BadInput : public std::exception {
 			public:
 				virtual const char *what() const throw();
 		};

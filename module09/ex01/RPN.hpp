@@ -2,11 +2,9 @@
 # define RPN_HPP
 
 # include <iostream>
-# include <string>
 # include <stack>
 // stack is Last-In, First-Out (LIFO). Most efficient for the tasks we need to do in this exercice.
-#include <cstdlib>
-#include <cctype>
+
 class RPN
 {
 	public:

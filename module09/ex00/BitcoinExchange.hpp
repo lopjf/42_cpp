@@ -1,15 +1,12 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <iostream>
+#include <iostream>
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
 #include <limits.h>
-#include <cstring>
 #include <map>
-#include <string>
-#include <cstdlib>
 #include <sstream>
 
 class BitcoinExchange

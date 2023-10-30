@@ -24,6 +24,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &assign)
 	return *this;
 }
 
+
 // Exceptions
 const char * BitcoinExchange::NoFile::what() const throw()
 {
@@ -34,6 +35,8 @@ const char * BitcoinExchange::BadInput::what() const throw()
 	return "Error: bad input.";
 }
 
+
+// Methods
 std::string BitcoinExchange::ft_itoa(const long int number) {
 	// this is sort of writing into a stream instead of in the terminal. Just like in minishell. We redirect it to catch it and that's how we convert int to string here.
 	std::ostringstream oss;
@@ -97,7 +100,6 @@ void BitcoinExchange::getPrice(const std::string str, const std::map<std::string
 	std::cout << inputDate << " => " << value << " = " << getClosestLowestValue(csvContent, inputDate) * value << std::endl;
 }
 
-// Methods
 void BitcoinExchange::getValue(const char *fileName)
 {
 	std::ifstream																ifs1(fileName);

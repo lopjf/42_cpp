@@ -1,8 +1,6 @@
 #include <iostream>
 #include "BitcoinExchange.hpp"
 
-class BitcoinExchange;
-
 int main(int ac, char *av[])
 {
     if (ac != 2) {

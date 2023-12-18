@@ -16,6 +16,9 @@ class PmergeMe
 		
 		// Operators
 		PmergeMe & operator=(const PmergeMe &assign);
+
+		// Methods
+		
 		
 	private:
 		

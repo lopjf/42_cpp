@@ -74,7 +74,7 @@ void Bureaucrat::decrementGrade()
 		std::cout << e.what() << std::endl;
 	}
 }
-void Bureaucrat::checkGrade(int grade)
+void Bureaucrat::checkGrade(int grade) const
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();

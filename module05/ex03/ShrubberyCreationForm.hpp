@@ -7,8 +7,6 @@
 # include <cstring>
 #include "AForm.hpp"
 
-class AForm;
-
 class ShrubberyCreationForm : public AForm
 {
 	public:

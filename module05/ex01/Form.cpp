@@ -77,7 +77,7 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 		std::cout << e.what() << std::endl;
 	}
 }
-void Form::checkGrade(int grade)
+void Form::checkGrade(int grade) const
 {
 	if (grade < 1)
 		throw Form::GradeTooHighException();

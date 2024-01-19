@@ -46,7 +46,7 @@ class Form
 		bool _sign;
 		const int _requiredGrade;
 		const int _gradeExecute;
-		void checkGrade(int grade);
+		void checkGrade(int grade) const;
 		
 };
 

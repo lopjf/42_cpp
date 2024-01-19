@@ -44,7 +44,6 @@ class AForm
 		
 		// Methods
 		void beSigned(Bureaucrat &bureaucrat);
-		void checkGrade(int grade);
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		void checkExecute(Bureaucrat const & executor) const;
 
@@ -53,7 +52,7 @@ class AForm
 		bool _sign;
 		const int _requiredGrade;
 		const int _gradeExecute;
-		
+		void checkGrade(int grade);
 };
 
 // Stream operators

@@ -5,8 +5,6 @@
 # include <string>
 #include "AForm.hpp"
 
-class AForm;
-
 class PresidentialPardonForm : public AForm
 {
 	public:

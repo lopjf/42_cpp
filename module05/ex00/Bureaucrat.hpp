@@ -39,8 +39,7 @@ class Bureaucrat
 	private:
 		const std::string _name;
 		int _grade;
-		void checkGrade(int grade);
-		
+		void checkGrade(int grade) const;
 };
 
 // Stream operators

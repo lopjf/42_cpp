@@ -81,7 +81,7 @@ void Bureaucrat::signForm(Form &form)
 	else
 		std::cout << getName() << " couldn’t sign " << form.getName() << " because " << getName() << " has a grade " << getGrade() << " and " << form.getName() << " requires a grade " << form.getRequiredGrade() << " to be signed." << std::endl;
 }
-void Bureaucrat::checkGrade(int grade)
+void Bureaucrat::checkGrade(int grade) const
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();

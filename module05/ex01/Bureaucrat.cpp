@@ -83,7 +83,6 @@ void Bureaucrat::signForm(Form &form)
 }
 void Bureaucrat::checkGrade(int grade)
 {
-	// if we catch the error here. It will still initialize the object with the default values.
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)

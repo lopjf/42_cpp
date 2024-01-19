@@ -32,6 +32,8 @@ int main()
 
     std::cout << std::endl;
     
+    b1.decrementGrade();
+    b2.incrementGrade();
     std::cout << b1 << std::endl;
     std::cout << b2 << std::endl;
 

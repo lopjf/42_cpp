@@ -40,13 +40,13 @@ class Form
 		
 		// Methods
 		void beSigned(Bureaucrat &bureaucrat);
-		void checkGrade(int grade);
 
 	private:
 		const std::string _name;
 		bool _sign;
 		const int _requiredGrade;
 		const int _gradeExecute;
+		void checkGrade(int grade);
 		
 };
 

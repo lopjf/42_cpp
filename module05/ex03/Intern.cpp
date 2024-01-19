@@ -53,5 +53,6 @@ AForm * Intern::makeForm(std::string name, std::string target)
 			if (form[i].compare(name) == 0)
 				return (this->*funcs[i])(target);
 
+	std::cout << "The form can't be created, it doesn't exist." << std::endl;
 	return NULL;
 }

@@ -52,7 +52,7 @@ void ScalarConverter::convert(std::string str)
 
 	tmp = strtod(&str[0], &pEnd);
 
-	if ((pEnd[0] != '\0' && pEnd[1] != '\0') || str == "inff" || str == "inf") {
+	if ((pEnd[0] != '\0' && pEnd[1] != '\0') || (pEnd[0] != 'f' && pEnd[1] == '\0' && tmp != 0) || str == "inff" || str == "inf") {
 		std::cout << "Invalid Parameter" << std::endl;
 		return ;
 	}

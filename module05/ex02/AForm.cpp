@@ -83,8 +83,6 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
 }
 void AForm::checkGrade(int grade)
 {
-	// if we catch the error here. It will still initialize the object with the default values.
-	// That's why we have to catch the error in the main.
 	if (grade < 1)
 		throw AForm::GradeTooHighException();
 	else if (grade > 150)

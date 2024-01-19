@@ -40,13 +40,12 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 		void signForm(AForm &form);
-		void checkGrade(int grade);
 		void executeForm(AForm const & form);
 
 	private:
 		const std::string _name;
 		int _grade;
-		
+		void checkGrade(int grade);
 };
 
 // Stream operators

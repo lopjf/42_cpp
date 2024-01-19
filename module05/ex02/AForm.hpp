@@ -53,7 +53,6 @@ class AForm
 		const int _requiredGrade;
 		const int _gradeExecute;
 		void checkGrade(int grade);
-		
 };
 
 // Stream operators

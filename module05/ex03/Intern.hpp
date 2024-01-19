@@ -26,7 +26,12 @@ class Intern
 		AForm * makeForm(std::string name, std::string target);
 
 	private:
-		
+	
+		AForm * shrubbery (std::string target);
+		AForm * robotomy (std::string target);
+		AForm * presidential (std::string target);
 };
+
+typedef	AForm* (Intern::*t_func)(std::string);
 
 #endif

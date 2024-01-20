@@ -9,6 +9,11 @@ int	main(void)
     data.n = 42;
     data.s2 = "World";
 
+    std::cout << "Original value: ";
+    std::cout << data.s1 << " ";
+    std::cout << data.n << " ";
+    std::cout << data.s2 << std::endl;
+
 // Here's a breakdown of what the function does:
 
 // reinterpret_cast<uintptr_t>(ptr):
@@ -18,7 +23,10 @@ int	main(void)
 // return (reinterpret_cast<uintptr_t>(ptr)):
 
 // The function returns the uintptr_t value obtained from the pointer ptr.
-// In essence, the serialize function effectively converts the pointer to a uintptr_t integer, which can be useful for saving and transmitting the memory address of the Data object or for other purposes like serialization and deserialization. However, it's important to note that this function does not actually serialize the content of the Data object itself; it only provides a way to represent the memory location of the object in the form of an integer.
+// The serialize function effectively converts the pointer to a uintptr_t integer, 
+// which can be useful for saving and transmitting the memory address of the Data object or for other purposes like serialization and deserialization. 
+// However, it's important to note that this function does not actually serialize the content of the Data object itself; 
+// it only provides a way to represent the memory location of the object in the form of an integer.
 
     uintptr_t raw = Serializer::serialize(&data);
     std::cout << "Serialization: " << raw << std::endl;

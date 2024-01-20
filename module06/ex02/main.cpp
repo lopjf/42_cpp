@@ -16,7 +16,7 @@ int getRamdom(int min, int max) {
     // Seed the random number generator with the current time
     std::srand(static_cast<unsigned int>(std::time(NULL)));
 
-    // Generate a random number between 1 and 2
+    // Generate a random number between min and max
     int randomValue = (std::rand() % max) + min;
 
     return randomValue;
@@ -37,6 +37,7 @@ Base * generate(void) {
 }
 
 void identify(Base* p) {
+    // Since pointers can be NULL, it'll return NULL if it fails
     A *a = dynamic_cast<A *>(p);
     B *b = dynamic_cast<B *>(p);
     C *c = dynamic_cast<C *>(p);

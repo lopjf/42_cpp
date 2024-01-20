@@ -1,4 +1,4 @@
-NAME 			= scalar
+NAME 			= convert
 SRCS 			= ./ScalarConverter.cpp ./main.cpp
 OBJS 			= $(SRCS:.cpp=.o)
 RM				= rm -f

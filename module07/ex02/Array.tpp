@@ -24,21 +24,21 @@ Array<T>::Array()
 }
 
 template <typename T>
-Array<T>::Array(int n)
+Array<T>::Array(uint n)
 {
 	_arr = new T[n];
 	_size = n;
-	std::cout << "\e[0;33mConstructor parameter int n called of Array\e[0m" << std::endl;
+	std::cout << "\e[0;33mConstructor parameter uint n called of Array\e[0m" << std::endl;
 }
 
 template <typename T>
 Array<T>::Array(const Array<T> &copy)
 {
-	int n = copy.size();
+	uint n = copy.size();
 	_size = n;
 
 	_arr = new T[_size];
-	for (int i = 0; i < _size; i++) {
+	for (uint i = 0; i < _size; i++) {
 		_arr[i] = copy._arr[i];
 	}
 	std::cout << "\e[0;33mCopy Constructor called of Array\e[0m" << std::endl;
@@ -66,12 +66,12 @@ const char * Array<T>::OutOfBond::what() const throw()
 template <typename T>
 Array<T> & Array<T>::operator=(const Array<T> &assign)
 {
-	int n = assign.size();
+	uint n = assign.size();
 	_size = n;
 
 	delete [] _arr;
 	_arr = new T[_size];
-	for (int i = 0; i < _size; i++) {
+	for (uint i = 0; i < _size; i++) {
 		_arr[i] = assign._arr[i];
 	}
 	std::cout << "\e[0;33mAssignment operator called of Array\e[0m" << std::endl;
@@ -81,7 +81,7 @@ Array<T> & Array<T>::operator=(const Array<T> &assign)
 // Implementation of [] operator.  This function must return a
 // reference as array element can be put on left side
 template <typename T>
-T & Array<T>::operator[](int i)
+T & Array<T>::operator[](long i)
 {
 	if (i < 0 || i >= size()) {
 		throw Array<T>::OutOfBond();
@@ -92,7 +92,7 @@ T & Array<T>::operator[](int i)
 
 // Methods
 template <typename T>
-int Array<T>::size() const
+uint Array<T>::size() const
 {
 	return _size;
 }

@@ -11,7 +11,7 @@ class Array
 	public:
 		// Constructors
 		Array();
-		Array(int n);
+		Array(uint n);
 		Array(const Array &copy);
 		
 		// Destructor
@@ -20,10 +20,10 @@ class Array
 		// Operators
 		Array & operator=(const Array &assign);
 		// Overloading [] operator to access elements in array style
-    	T & operator[](int i);
+    	T & operator[](long i);
 		
 		// Methods
-		int size() const;
+		uint size() const;
 
 		// Exceptions
 		class OutOfBond : public std::exception {
@@ -34,7 +34,7 @@ class Array
 	private:
 		
 		T *_arr;
-		int _size;
+		uint _size;
 
 };
 

@@ -32,7 +32,7 @@ int main(void)
     std::cout << "-------" << std::endl << std::endl;
 
 
-    //MutantStack
+    //list
     std::list<int> mlist;
     mlist.push_back(5);
     mlist.push_back(17);

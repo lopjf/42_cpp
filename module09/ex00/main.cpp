@@ -3,7 +3,7 @@
 int main(int ac, char *av[])
 {
     if (ac != 2) {
-        std::cout << "The program takes 1 argument." << std::endl;
+        std::cout << "Error: could not open file." << std::endl;
         return 1;
     }
     BitcoinExchange::getValue(av[1]);

@@ -74,6 +74,6 @@ int Span::longestSpan() const {
 		throw Span::notEnoughNumbers();
 	int min = *std::min_element(_arr.begin(), _arr.end());
 	int max = *std::max_element(_arr.begin(), _arr.end());
-	int span	= max - min;
+	int span = max - min;
 	return span;
 }

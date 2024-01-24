@@ -7,6 +7,6 @@ int main(int ac, char *av[])
         std::cout << "The program must take at least 1 argument." << std::endl;
         return 1;
     }
-    (void)av;
+    PmergeMe::sort(ac, av);
     return 0;
 }

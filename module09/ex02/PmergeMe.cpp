@@ -47,11 +47,12 @@ void PmergeMe::sort(int ac, char *av[])
 	std::cout << "Before: ";
 	printList(lst);
 
+	// init the time structs
 	struct timeval start, end;
 
-	gettimeofday(&start, NULL);
+	gettimeofday(&start, NULL);	// start the timer
 	std::list<int> sortedLst = mergeInsertSort(lst);
-	gettimeofday(&end, NULL);
+	gettimeofday(&end, NULL);	// stops the timer
 	double listTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
 	gettimeofday(&start, NULL);
@@ -79,6 +80,8 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 {
 	// sorting algorithm
 	// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
+	// https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
+	// https://github.com/Morwenn/cpp-sort/blob/1.x.y-stable/include/cpp-sort/detail/merge_insertion_sort.h
 	return lst;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)

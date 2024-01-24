@@ -78,7 +78,7 @@ void PmergeMe::printList(std::list<int> & lst)
 std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 {
 	// sorting algorithm
-
+	// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
 	return lst;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)

@@ -52,7 +52,6 @@ void PmergeMe::sort(int ac, char *av[])
 
 	gettimeofday(&start, NULL);	// start the timer
 	std::list<int> sortedLst = mergeInsertSort(lst);
-	std::cout << "ok" << std::endl;
 	gettimeofday(&end, NULL);	// stops the timer
 	double listTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
@@ -93,11 +92,7 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 		arr_size = (arr_size / 2) + 1;
 
 	std::list<int> pairs[arr_size];
-
-	// std::list<int>::iterator it = lst.begin();
-	// std::list<int>::iterator ite = lst.end();
 	
-	// while (it != ite) {
 	for (int i = 0; i < arr_size; ++i) {
 		if (i == arr_size - 1) {
 			if (lst.size() == 1) {
@@ -107,20 +102,31 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 		}
 		for (int j = 0; j < 2; ++j) {
 			pairs[i].splice(pairs[i].begin(), lst, lst.begin());
-			// sort the pairs
-			pairs[i].sort();
 		}
+		// sort the pairs
+		pairs[i].sort();
 	}
 
-	printList(pairs[0]);
-	printList(pairs[1]);
-	printList(pairs[2]);
-
-
-	// dispatch the sorted pairs into a and b
-
+	// dispatch the sorted pairs into a and b. Put in a the highest numbers, and b get the smallest.
+	
 	// std::list<int> a;
 	// std::list<int> b;
+
+	// for (int i = 0; i < arr_size; ++i) {
+	// 	if (i == arr_size - 1) {
+	// 		if (lst.size() == 1) {
+	// 			b.splice(b.begin(), pairs[i], pairs[i].begin());
+	// 			break;
+	// 		}
+	// 	}
+	// 	for (int j = 0; j < 2; ++j) {
+	// 		a.splice(a.begin(), pairs[i], pairs[i].begin());
+	// 		b.splice(b.begin(), pairs[i], pairs[i].begin());
+	// 	}
+	// }
+
+	// printList(a);
+	// printList(b);
 
 	return lst;
 }

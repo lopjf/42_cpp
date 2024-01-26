@@ -52,6 +52,7 @@ void PmergeMe::sort(int ac, char *av[])
 
 	gettimeofday(&start, NULL);	// start the timer
 	std::list<int> sortedLst = mergeInsertSort(lst);
+	std::cout << "ok" << std::endl;
 	gettimeofday(&end, NULL);	// stops the timer
 	double listTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
@@ -82,6 +83,45 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 	// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
 	// https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
 	// https://github.com/Morwenn/cpp-sort/blob/1.x.y-stable/include/cpp-sort/detail/merge_insertion_sort.h
+
+
+	// 1st: Create an array of pairs
+	int arr_size = lst.size();
+	if (arr_size % 2 == 0)
+		arr_size /= 2;
+	else
+		arr_size = (arr_size / 2) + 1;
+
+	std::list<int> pairs[arr_size];
+
+	// std::list<int>::iterator it = lst.begin();
+	// std::list<int>::iterator ite = lst.end();
+	
+	// while (it != ite) {
+	for (int i = 0; i < arr_size; ++i) {
+		if (i == arr_size - 1) {
+			if (lst.size() == 1) {
+				pairs[i].splice(pairs[i].begin(), lst, lst.begin());
+				break;
+			}
+		}
+		for (int j = 0; j < 2; ++j) {
+			pairs[i].splice(pairs[i].begin(), lst, lst.begin());
+			// sort the pairs
+			pairs[i].sort();
+		}
+	}
+
+	printList(pairs[0]);
+	printList(pairs[1]);
+	printList(pairs[2]);
+
+
+	// dispatch the sorted pairs into a and b
+
+	// std::list<int> a;
+	// std::list<int> b;
+
 	return lst;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)

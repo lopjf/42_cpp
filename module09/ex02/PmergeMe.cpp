@@ -130,6 +130,13 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 	b.reverse();
 	printList(b);
 
+	// sort a and b
+
+	a.sort();
+	printList(a);
+	b.sort();
+	printList(b);
+
 	return lst;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)

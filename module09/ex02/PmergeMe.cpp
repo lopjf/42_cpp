@@ -105,28 +105,30 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 		}
 		// sort the pairs
 		pairs[i].sort();
+		pairs[i].reverse();
 	}
 
 	// dispatch the sorted pairs into a and b. Put in a the highest numbers, and b get the smallest.
 	
-	// std::list<int> a;
-	// std::list<int> b;
+	std::list<int> a;
+	std::list<int> b;
 
-	// for (int i = 0; i < arr_size; ++i) {
-	// 	if (i == arr_size - 1) {
-	// 		if (lst.size() == 1) {
-	// 			b.splice(b.begin(), pairs[i], pairs[i].begin());
-	// 			break;
-	// 		}
-	// 	}
-	// 	for (int j = 0; j < 2; ++j) {
-	// 		a.splice(a.begin(), pairs[i], pairs[i].begin());
-	// 		b.splice(b.begin(), pairs[i], pairs[i].begin());
-	// 	}
-	// }
+	for (int i = 0; i < arr_size; ++i) {
+		if (i == arr_size - 1) {
+			if (pairs[i].size() == 1) {
+				std::cout << "here" << std::endl;
+				b.splice(b.begin(), pairs[i], pairs[i].begin());
+				break;
+			}
+		}
+		a.splice(a.begin(), pairs[i], pairs[i].begin());
+		b.splice(b.begin(), pairs[i], pairs[i].begin());
+	}
 
-	// printList(a);
-	// printList(b);
+	a.reverse();
+	printList(a);
+	b.reverse();
+	printList(b);
 
 	return lst;
 }

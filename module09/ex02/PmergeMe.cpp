@@ -115,17 +115,22 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 		b.splice(b.end(), pairs[i], pairs[i].begin());
 	}
 
-	printList(a);
-	printList(b);
-
 	// sort a and b
-
 	a.sort(std::greater<int>());
 	b.sort(std::greater<int>());
 
 	// add last to b if odd sequence
 	if (lst_size % 2 != 0) {
 		b.splice(b.end(), last, last.begin());
+	}
+
+	printList(a);
+	printList(b);
+
+	// place b into a. Use Jacobsthal Numbers to minimize comparison cost.
+	// uint index = 1;
+	while (b.size() > 0) {
+		a.splice(a.end(), b, b.begin());
 	}
 
 	printList(a);

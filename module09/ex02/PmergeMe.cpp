@@ -85,56 +85,50 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 
 
 	// 1st: Create an array of pairs
-	int arr_size = lst.size();
-	if (arr_size % 2 == 0)
-		arr_size /= 2;
-	else
-		arr_size = (arr_size / 2) + 1;
+	int lst_size = lst.size();
+	int arr_size = lst_size / 2;
+
 
 	std::list<int> pairs[arr_size];
 	
 	for (int i = 0; i < arr_size; ++i) {
-		if (i == arr_size - 1) {
-			if (lst.size() == 1) {
-				pairs[i].splice(pairs[i].begin(), lst, lst.begin());
-				break;
-			}
-		}
 		for (int j = 0; j < 2; ++j) {
-			pairs[i].splice(pairs[i].begin(), lst, lst.begin());
+			pairs[i].splice(pairs[i].end(), lst, lst.begin());
 		}
 		// sort the pairs
 		pairs[i].sort();
-		pairs[i].reverse();
 	}
 
-	// dispatch the sorted pairs into a and b. Put in a the highest numbers, and b get the smallest.
+	// Store the last one into last if odd sequence
+	std::list<int> last;
+	if (lst_size % 2 != 0) {
+		last.splice(last.begin(), lst, lst.begin());
+	}
+
+	// dispatch the sorted pairs into a and b. Put in a the smallest numbers, and b get the highest.
 	
 	std::list<int> a;
 	std::list<int> b;
 
 	for (int i = 0; i < arr_size; ++i) {
-		if (i == arr_size - 1) {
-			if (pairs[i].size() == 1) {
-				std::cout << "here" << std::endl;
-				b.splice(b.begin(), pairs[i], pairs[i].begin());
-				break;
-			}
-		}
-		a.splice(a.begin(), pairs[i], pairs[i].begin());
-		b.splice(b.begin(), pairs[i], pairs[i].begin());
+		a.splice(a.end(), pairs[i], pairs[i].begin());
+		b.splice(b.end(), pairs[i], pairs[i].begin());
 	}
 
-	a.reverse();
 	printList(a);
-	b.reverse();
 	printList(b);
 
 	// sort a and b
 
-	a.sort();
+	a.sort(std::greater<int>());
+	b.sort(std::greater<int>());
+
+	// add last to b if odd sequence
+	if (lst_size % 2 != 0) {
+		b.splice(b.end(), last, last.begin());
+	}
+
 	printList(a);
-	b.sort();
 	printList(b);
 
 	return lst;

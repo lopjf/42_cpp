@@ -41,19 +41,19 @@ void PmergeMe::sort(int ac, char *av[])
 			return;
 		}
 	}
-	std::list<int> lst(sequence, sequence + ac - 1);
+	std::deque<int> dque(sequence, sequence + ac - 1);
 	std::vector<int> vec(sequence, sequence + ac - 1);
 
 	std::cout << "Before: ";
-	printList(lst);
+	printDeque(dque);
 
 	// init the time structs
 	struct timeval start, end;
 
 	gettimeofday(&start, NULL);	// start the timer
-	std::list<int> sortedLst = mergeInsertSort(lst);
+	std::deque<int> sortedLst = mergeInsertSort(dque);
 	gettimeofday(&end, NULL);	// stops the timer
-	double listTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
+	double dequeTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
 	gettimeofday(&start, NULL);
 	std::vector<int> sortedVec = mergeInsertSort(vec);
@@ -61,22 +61,22 @@ void PmergeMe::sort(int ac, char *av[])
 	double vectorTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
 	std::cout << "After: ";
-	printList(sortedLst);
+	printDeque(sortedLst);
 
-    std::cout << "Time to process a range of " << lst.size() <<  " elements with std::list : " << std::fixed << listTime << " us" << std::endl;
-    std::cout << "Time to process a range of " << lst.size() <<  " elements with std::vector : " << std::fixed << vectorTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << dque.size() <<  " elements with std::deque : " << std::fixed << dequeTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << dque.size() <<  " elements with std::vector : " << std::fixed << vectorTime << " us" << std::endl;
 }
 
 
-void PmergeMe::printList(std::list<int> & lst)
+void PmergeMe::printDeque(std::deque<int> & dque)
 {
-	for (std::list<int>::iterator it = lst.begin(); it != lst.end(); it++) {
+	for (std::deque<int>::iterator it = dque.begin(); it != dque.end(); it++) {
 		std::cout << *it << ' ';
 	}
 	std::cout << std::endl;
 }
 
-std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
+std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 {
 	// sorting algorithm
 	// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
@@ -85,58 +85,64 @@ std::list<int> PmergeMe::mergeInsertSort(std::list<int> & lst)
 
 
 	// 1st: Create an array of pairs
-	int lst_size = lst.size();
-	int arr_size = lst_size / 2;
+	int dque_size = dque.size();
+	int arr_size = dque_size / 2;
 
 
-	std::list<int> pairs[arr_size];
+	std::deque<int> pairs[arr_size];
 	
 	for (int i = 0; i < arr_size; ++i) {
 		for (int j = 0; j < 2; ++j) {
-			pairs[i].splice(pairs[i].end(), lst, lst.begin());
+			pairs[i].push_back(dque.front());
+			dque.pop_front();
 		}
 		// sort the pairs
-		pairs[i].sort();
+		std::sort(pairs[i].begin(), pairs[i].end());
 	}
 
 	// Store the last one into last if odd sequence
-	std::list<int> last;
-	if (lst_size % 2 != 0) {
-		last.splice(last.begin(), lst, lst.begin());
+	std::deque<int> last;
+	if (dque_size % 2 != 0) {
+		last.push_back(dque.front());
+		dque.pop_front();
 	}
 
 	// dispatch the sorted pairs into a and b. Put in a the smallest numbers, and b get the highest.
 	
-	std::list<int> a;
-	std::list<int> b;
+	std::deque<int> a;
+	std::deque<int> b;
 
 	for (int i = 0; i < arr_size; ++i) {
-		a.splice(a.end(), pairs[i], pairs[i].begin());
-		b.splice(b.end(), pairs[i], pairs[i].begin());
+		a.push_back(pairs[i].front());
+		pairs[i].pop_front();
+		b.push_back(pairs[i].front());
+		pairs[i].pop_front();
 	}
 
 	// sort a and b
-	a.sort(std::greater<int>());
-	b.sort(std::greater<int>());
+	std::sort(a.begin(), a.end(), std::greater<int>());
+	std::sort(b.begin(), b.end(), std::greater<int>());
 
 	// add last to b if odd sequence
-	if (lst_size % 2 != 0) {
-		b.splice(b.end(), last, last.begin());
+	if (dque_size % 2 != 0) {
+		b.push_back(last.front());
+		last.pop_front();
 	}
 
-	printList(a);
-	printList(b);
+	printDeque(a);
+	printDeque(b);
 
 	// place b into a. Use Jacobsthal Numbers to minimize comparison cost.
 	// uint index = 1;
 	while (b.size() > 0) {
-		a.splice(a.end(), b, b.begin());
+		a.push_back(b.front());
+		b.pop_front();
 	}
 
-	printList(a);
-	printList(b);
+	printDeque(a);
+	printDeque(b);
 
-	return lst;
+	return dque;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)
 {

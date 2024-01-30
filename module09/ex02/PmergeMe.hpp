@@ -6,10 +6,11 @@
 # include <cstdlib>
 # include <cerrno>
 # include <climits>
-# include <list>
+# include <deque>
 # include <vector>
 # include <sys/time.h>
 # include <iomanip>
+# include <algorithm>
 
 class PmergeMe
 {
@@ -28,8 +29,8 @@ class PmergeMe
 		static void sort(int ac, char *av[]);
 		
 	private:
-		static void printList(std::list<int> & lst);
-		static std::list<int> mergeInsertSort(std::list<int> & lst);
+		static void printDeque(std::deque<int> & dque);
+		static std::deque<int> mergeInsertSort(std::deque<int> & dque);
 		static std::vector<int> mergeInsertSort(std::vector<int> & vec);
 };
 

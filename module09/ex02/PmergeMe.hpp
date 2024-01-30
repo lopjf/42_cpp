@@ -8,9 +8,11 @@
 # include <climits>
 # include <deque>
 # include <vector>
+# include <queue>
 # include <sys/time.h>
 # include <iomanip>
 # include <algorithm>
+# include <stdbool.h>
 
 class PmergeMe
 {
@@ -33,6 +35,8 @@ class PmergeMe
 		static std::deque<int> mergeInsertSort(std::deque<int> & dque);
 		static std::vector<int> mergeInsertSort(std::vector<int> & vec);
 		static uint getJacobsthalNumber(uint index);
+		static bool isJacobsthalNumber(uint num);
+		static uint getCorrectIndex(uint index);
 };
 
 #endif

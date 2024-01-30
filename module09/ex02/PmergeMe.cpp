@@ -95,6 +95,35 @@ uint PmergeMe::getJacobsthalNumber(uint index)
 	return current;
 }
 
+bool PmergeMe::isJacobsthalNumber(uint num) {
+    uint i = 0;
+    while (true) {
+        uint jacobs = getJacobsthalNumber(i);
+        if (jacobs == num) return true;
+        if (jacobs > num) return false;
+        i++;
+    }
+}
+
+uint PmergeMe::getCorrectIndex(uint index)
+{
+	uint jacobs = 2;
+	std::queue<uint> tmp;
+	tmp.push(1);
+
+	while (tmp.size() <= index) {
+		uint toAdd = getJacobsthalNumber(jacobs + 1) - getJacobsthalNumber(jacobs) - 1;
+		// insert until next jacob number
+		for (uint i = 0; i <= toAdd; i++) {
+			if (tmp.size() > index)
+				break;
+			tmp.push(getJacobsthalNumber(jacobs + 1) - i);
+		}
+		jacobs++;
+	}
+	return tmp.back();
+}
+
 std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 {
 	// sorting algorithm
@@ -151,17 +180,22 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 	printDeque(a);
 	printDeque(b);
 
-	// place b into a. Use Jacobsthal Numbers to minimize comparison cost.
-	// uint index = 1;
-	while (b.size() > 0) {
-		a.push_back(b.front());
-		b.pop_front();
+	for (int i = 0; i < 10; i++){
+		std::cout << getCorrectIndex(i) << std::endl;
+		// getCorrectIndex(i);
+		// std::cout << std:endl;
 	}
 
-	printDeque(a);
-	printDeque(b);
+	// place b into a. Use Jacobsthal Numbers to minimize comparison cost.
+	// uint i = 1;
+	// while (b.size() > 0) {
+	// 	a.push_front(b[i]);
+		// b.erase(b.begin() + i);
+	// }
 
-	return dque;
+	printDeque(b);
+	
+	return a;
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)
 {

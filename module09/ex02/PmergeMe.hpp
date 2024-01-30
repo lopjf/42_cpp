@@ -32,6 +32,7 @@ class PmergeMe
 		static void printDeque(std::deque<int> & dque);
 		static std::deque<int> mergeInsertSort(std::deque<int> & dque);
 		static std::vector<int> mergeInsertSort(std::vector<int> & vec);
+		static uint getJacobsthalNumber(uint index);
 };
 
 #endif

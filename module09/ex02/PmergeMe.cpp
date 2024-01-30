@@ -76,6 +76,25 @@ void PmergeMe::printDeque(std::deque<int> & dque)
 	std::cout << std::endl;
 }
 
+uint PmergeMe::getJacobsthalNumber(uint index)
+{
+	if (index == 0)
+		return 0;
+	if (index == 1)
+		return 1;
+
+	uint prev = 0;
+	uint current = 1;
+
+    for (uint i = 2; i <= index; i++) {
+        uint tmp = current;
+        current += 2 * prev;
+        prev = tmp;
+    }
+
+	return current;
+}
+
 std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 {
 	// sorting algorithm

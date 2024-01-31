@@ -45,7 +45,7 @@ void PmergeMe::sort(int ac, char *av[])
 	std::vector<int> vec(sequence, sequence + ac - 1);
 
 	std::cout << "Before: ";
-	printDeque(dque);
+	printContainer(dque);
 
 	// init the time structs
 	struct timeval start, end;
@@ -61,16 +61,16 @@ void PmergeMe::sort(int ac, char *av[])
 	double vectorTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
 	std::cout << "After: ";
-	printDeque(sortedDque);
+	printContainer(sortedDque);
 
     std::cout << "Time to process a range of " << dque.size() <<  " elements with std::deque : " << std::fixed << dequeTime << " us" << std::endl;
     std::cout << "Time to process a range of " << dque.size() <<  " elements with std::vector : " << std::fixed << vectorTime << " us" << std::endl;
 }
 
-
-void PmergeMe::printDeque(std::deque<int> & dque)
+template <typename T>
+void printContainer(T & cont)
 {
-	for (std::deque<int>::iterator it = dque.begin(); it != dque.end(); it++) {
+	for (typename T::iterator it = cont.begin(); it != cont.end(); it++) {
 		std::cout << *it << ' ';
 	}
 	std::cout << std::endl;

@@ -31,12 +31,14 @@ class PmergeMe
 		static void sort(int ac, char *av[]);
 		
 	private:
-		static void printDeque(std::deque<int> & dque);
 		static std::deque<int> mergeInsertSort(std::deque<int> & dque);
 		static std::vector<int> mergeInsertSort(std::vector<int> & vec);
 		static uint getJacobsthalNumber(uint index);
 		static bool isJacobsthalNumber(uint num);
 		static uint getCorrectIndex(uint index);
 };
+
+template <typename T>
+void printContainer(T & dque);
 
 #endif

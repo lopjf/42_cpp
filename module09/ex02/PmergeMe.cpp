@@ -51,7 +51,7 @@ void PmergeMe::sort(int ac, char *av[])
 	struct timeval start, end;
 
 	gettimeofday(&start, NULL);	// start the timer
-	std::deque<int> sortedLst = mergeInsertSort(dque);
+	std::deque<int> sortedDque = mergeInsertSort(dque);
 	gettimeofday(&end, NULL);	// stops the timer
 	double dequeTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
@@ -61,7 +61,7 @@ void PmergeMe::sort(int ac, char *av[])
 	double vectorTime = ((end.tv_sec - start.tv_sec) * 1e6) + (end.tv_usec - start.tv_usec) * 1e-6;
 
 	std::cout << "After: ";
-	printDeque(sortedLst);
+	printDeque(sortedDque);
 
     std::cout << "Time to process a range of " << dque.size() <<  " elements with std::deque : " << std::fixed << dequeTime << " us" << std::endl;
     std::cout << "Time to process a range of " << dque.size() <<  " elements with std::vector : " << std::fixed << vectorTime << " us" << std::endl;
@@ -134,8 +134,6 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 	// 1st: Create an array of pairs
 	int dque_size = dque.size();
 	int arr_size = dque_size / 2;
-
-
 	std::deque<int> pairs[arr_size];
 	
 	for (int i = 0; i < arr_size; ++i) {
@@ -143,19 +141,17 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 			pairs[i].push_back(dque.front());
 			dque.pop_front();
 		}
-		// sort the pairs
 		std::sort(pairs[i].begin(), pairs[i].end());
 	}
 
-	// Store the last one into last if odd sequence
+	// Store the last one into the var last if odd sequence
 	std::deque<int> last;
 	if (dque_size % 2 != 0) {
 		last.push_back(dque.front());
 		dque.pop_front();
 	}
 
-	// dispatch the sorted pairs into a and b. Put in a the smallest numbers, and b get the highest.
-	
+	// dispatch the sorted pairs into a and b. Put in a the smallest numbers, and b the highest.
 	std::deque<int> a;
 	std::deque<int> b;
 
@@ -165,8 +161,6 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 		b.push_back(pairs[i].front());
 		pairs[i].pop_front();
 	}
-
-	// sort a and b
 	std::sort(a.begin(), a.end(), std::greater<int>());
 	std::sort(b.begin(), b.end(), std::greater<int>());
 
@@ -196,7 +190,61 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)
 {
-	// sorting algorithm
+	// 1st: Create an array of pairs
+	int vec_size = vec.size();
+	int arr_size = vec_size / 2;
+	std::vector<int> pairs[arr_size];
+	
+	for (int i = 0; i < arr_size; ++i) {
+		for (int j = 0; j < 2; ++j) {
+			pairs[i].push_back(vec.front());
+			vec.erase(vec.begin());
 
-	return vec;
+		}
+		std::sort(pairs[i].begin(), pairs[i].end());
+	}
+
+	// Store the last one into the var last if odd sequence
+	std::vector<int> last;
+	if (vec_size % 2 != 0) {
+		last.push_back(vec.front());
+		vec.erase(vec.begin());
+	}
+
+	// dispatch the sorted pairs into a and b. Put in a the smallest numbers, and b the highest.
+	std::vector<int> a;
+	std::vector<int> b;
+
+	for (int i = 0; i < arr_size; ++i) {
+		a.push_back(pairs[i].front());
+		pairs[i].erase(pairs[i].begin());
+		b.push_back(pairs[i].front());
+		pairs[i].erase(pairs[i].begin());
+	}
+	std::sort(a.begin(), a.end(), std::greater<int>());
+	std::sort(b.begin(), b.end(), std::greater<int>());
+
+	// add last to b if odd sequence
+	if (vec_size % 2 != 0) {
+		b.push_back(last.front());
+		last.erase(last.begin());
+	}
+
+	// place b into a. Use Jacobsthal Numbers to minimize comparison cost.
+	uint i = 0;
+	uint b_size = b.size();
+	for (std::vector<int>::iterator it = b.begin(); it != b.end(); ++it) {
+		while (getCorrectIndex(i) >= b_size) {
+			i++;
+		}
+		uint j = 0;
+		while (b[getCorrectIndex(i)] <= a[j]) {
+			j++;
+		}
+		a.insert(a.begin() + j, b[getCorrectIndex(i)]);
+		i++;
+	}
+
+	reverse(a.begin(), a.end());
+	return a;
 }

@@ -73,12 +73,13 @@ void RPN::processRpn(char *str) {
 			} else if (str[0] == '-') {
 				numbers.push(tmp1 - tmp2);
 			} else if (str[0] == '/') {
+				if (tmp2 == 0)
+					throw Error();
 				numbers.push(tmp1 / tmp2);
 			} else if (str[0] == '*') {
 				numbers.push(tmp1 * tmp2);
 			}
 		}
-
 
 		str++;
 		skipSpaces(str);

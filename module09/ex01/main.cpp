@@ -7,7 +7,7 @@ int main(int ac, char *av[])
         std::cout << "The program must take 1 argument." << std::endl;
         return 1;
     }
-    try {	
+    try {
         RPN::processRpn(av[1]);
 	} catch (std::exception &e) {
         std::cout << e.what() << std::endl;

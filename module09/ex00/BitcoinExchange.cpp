@@ -47,7 +47,7 @@ float BitcoinExchange::getClosestLowestValue(const std::map<std::string, float> 
 
 	// If the date is not found, but there is a lower date
 	if (it != csvContent.begin()) {
-		--it;	// go to the value before, it being an initialise value. it's skipping all the days to go straight to the closest value.
+		--it;	// go to the value before, it being an initialize value. it's skipping all the days to go straight to the closest value.
 		return it->second;
 	}
 

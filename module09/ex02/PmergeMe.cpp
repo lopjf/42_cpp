@@ -131,6 +131,9 @@ uint PmergeMe::getCorrectIndex(uint index)
 
 std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 {
+	if (dque.size() < 2)
+		return dque;
+
 	// 1st: Create an array of pairs
 	int dque_size = dque.size();
 	int arr_size = dque_size / 2;
@@ -190,6 +193,9 @@ std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 }
 std::vector<int> PmergeMe::mergeInsertSort(std::vector<int> & vec)
 {
+	if (vec.size() < 2)
+		return vec;
+	
 	// 1st: Create an array of pairs
 	int vec_size = vec.size();
 	int arr_size = vec_size / 2;

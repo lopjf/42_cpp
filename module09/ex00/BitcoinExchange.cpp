@@ -60,7 +60,7 @@ void BitcoinExchange::getPrice(const std::string str, const std::map<std::string
 	char *pEnd;
 	errno = 0;
 	long int year = strtol(str.c_str(), &pEnd, 10);
-	// strtol sets errno to != 0 if out of bond. Since it's a long int, the out of bond is higher than for int. pEnd will be set to what remains after the conversion. if conversion was impossible. pEnd will be the inputed stirng.
+	// strtol sets errno to != 0 if out of bond. Since it's a long int, the out of bond is higher than for int. pEnd will be set to what remains after the conversion. if conversion was impossible. pEnd will be the inputed string.
 	if (errno != 0 || year < INT_MIN || year > INT_MAX || pEnd[0] != '-') {
 		std::cout << "Error: Bad input => " << str << std::endl;
 		return;

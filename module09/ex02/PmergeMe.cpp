@@ -1,3 +1,8 @@
+// sorting algorithms
+// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
+// https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
+// https://github.com/Morwenn/cpp-sort/blob/1.x.y-stable/include/cpp-sort/detail/merge_insertion_sort.h
+
 #include "PmergeMe.hpp"
 
 // Constructors
@@ -123,11 +128,6 @@ uint PmergeMe::getCorrectIndex(uint index)
 	}
 	return tmp.back() - 1;
 }
-
-// sorting algorithms
-// https://github.com/decidedlyso/merge-insertion-sort/blob/master/README.md
-// https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
-// https://github.com/Morwenn/cpp-sort/blob/1.x.y-stable/include/cpp-sort/detail/merge_insertion_sort.h
 
 std::deque<int> PmergeMe::mergeInsertSort(std::deque<int> & dque)
 {
